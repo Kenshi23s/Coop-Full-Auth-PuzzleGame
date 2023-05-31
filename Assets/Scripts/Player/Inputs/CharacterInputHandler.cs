@@ -4,15 +4,34 @@ using UnityEngine;
 
 public class CharacterInputHandler : MonoBehaviour
 {
-    // Start is called before the first frame update
+    float _movementInput;
+
+    bool _isJumpPressed;  
+
+    NetworkInputData _inputData;
+
     void Start()
     {
-        
+        _inputData = new NetworkInputData();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        _movementInput = Input.GetAxis("Horizontal");
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            _isJumpPressed = true;
+        }       
+    }
+
+    public NetworkInputData GetInputs()
+    {
+        _inputData.movementInput = _movementInput;
+
+        _inputData.isJumpPressed = _isJumpPressed;
+        _isJumpPressed = false;       
+
+        return _inputData;
     }
 }
