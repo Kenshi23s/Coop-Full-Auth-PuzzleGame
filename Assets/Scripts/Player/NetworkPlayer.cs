@@ -1,6 +1,7 @@
 using UnityEngine;
 using Fusion;
 using System;
+using System.Linq;
 
 public class NetworkPlayer : NetworkBehaviour
 {
@@ -14,6 +15,7 @@ public class NetworkPlayer : NetworkBehaviour
     NetworkCharacterControllerCustom _movement;
     NicknameText _myNickname;
 
+    float interactRadius;
     Color newColor;
 
     public event Action OnLeft = delegate { };
@@ -34,7 +36,24 @@ public class NetworkPlayer : NetworkBehaviour
         _movement.Move(new Vector3(inputs.movementInput,0));
 
         if (inputs.isJumpPressed) _movement.Jump();
+
+        if (inputs.isInteractPressed) NearestInteractable();
+
+
     }
+
+
+    void NearestInteractable()
+    {
+        Collider col = Physics.OverlapSphere(transform.position, interactRadius)
+            .Where(x => x.GetComponent<Iinteractable>() != null)
+            .OrderByDescending(x => Vector3.Distance(x.transform.position, transform.position))
+            .First(); 
+
+        if (col.TryGetComponent(out Iinteractable y)) y.Interact(this);
+        
+    }
+
     public override void FixedUpdateNetwork()
     {
        

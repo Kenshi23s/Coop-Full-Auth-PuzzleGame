@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 2576506201143095621}
   - component: {fileID: 4041255442677180181}
   - component: {fileID: 5763579451849744796}
-  m_Layer: 0
-  m_Name: Platforms
+  m_Layer: 6
+  m_Name: '[Fire]Platforms'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -164,8 +164,8 @@ GameObject:
   - component: {fileID: 2576506201266342595}
   - component: {fileID: 6104041367706552245}
   - component: {fileID: 1767648771679184094}
-  m_Layer: 0
-  m_Name: Platforms
+  m_Layer: 6
+  m_Name: '[Fire]Platforms'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -361,8 +361,8 @@ GameObject:
   - component: {fileID: 2576506201574170716}
   - component: {fileID: 2946855069710213716}
   - component: {fileID: 274408699140048093}
-  m_Layer: 0
-  m_Name: Platforms
+  m_Layer: 6
+  m_Name: '[Fire]Platforms'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -510,8 +510,8 @@ GameObject:
   - component: {fileID: 2576506201831354055}
   - component: {fileID: 5427046912170399}
   - component: {fileID: 2589993090701218430}
-  m_Layer: 0
-  m_Name: Platforms
+  m_Layer: 6
+  m_Name: '[Fire]Platforms'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

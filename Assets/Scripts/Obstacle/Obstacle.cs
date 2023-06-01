@@ -27,7 +27,7 @@ public class Obstacle : NetworkBehaviour
         GetComponent<Renderer>().sharedMaterial = x.Item2;
     }
     // Update is called once per frame
-    public void Destroy()
+    public void DestroyObstacle()
     {
         Runner.Despawn(this.Object);
     }
@@ -35,8 +35,7 @@ public class Obstacle : NetworkBehaviour
     private void OnValidate()
     {
         //ver porque no puedo pasar la layer mask y tengo q ponerlo a mano
-        if (Application.isPlaying) return;
-        return;
+        if (Application.isPlaying) return;      
   
         if (gameObject.name.Contains("[Fire]"))
         {
@@ -50,13 +49,15 @@ public class Obstacle : NetworkBehaviour
         }
         
         Tuple<Color,string,int> x = myElement == Element.Fire 
-            ? Tuple.Create(Color.red,"[Fire]",6) 
-            : Tuple.Create(Color.blue,"[Water]", 7);
+            ? Tuple.Create(new Color (1,0,0,0.5f),"[Fire]",6) 
+            : Tuple.Create(new Color(0,0,1,0.5f),"[Water]", 7);
 
-        if (TryGetComponent(out Renderer z))
-        {
-            z.material.color = new Color(x.Item1.r, x.Item1.g, x.Item1.b, 0.5f);
-        }
+        //if (TryGetComponent(out Renderer z))
+        //{
+        //    if (z != null)
+        //        z.sharedMaterial.color = x.Item1;
+                    
+        //}
 
         gameObject.name = x.Item2 +  gameObject.name;
         gameObject.layer = x.Item3;

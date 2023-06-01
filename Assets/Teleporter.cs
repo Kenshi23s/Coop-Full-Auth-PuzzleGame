@@ -1,12 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(DebugableObject))]
-public class Teleporter : MonoBehaviour
+public class Teleporter : MonoBehaviour ,Iinteractable
 {
 
     [SerializeField]
     Teleporter TPTo;
+
+    public void Interact(NetworkPlayer whoInteracted)
+    {
+        if (TPTo == null) return;
+        
+        whoInteracted.transform.position = new Vector3(TPTo.transform.position.x, 
+                                                       TPTo.transform.position.y,
+                                                       whoInteracted.transform.position.z);
+    }
 
     private void Awake()
     {
@@ -22,4 +29,8 @@ public class Teleporter : MonoBehaviour
         DrawArrow.ForGizmo(transform.position, dir.normalized * 5,color,1,30);
     }
 
+}
+public interface Iinteractable
+{
+    void Interact(NetworkPlayer whoInteracted);
 }
