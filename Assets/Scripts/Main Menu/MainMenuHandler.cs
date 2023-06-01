@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MainMenuHandler : MonoBehaviour
 {
-    [SerializeField] NetworkRunnerHandler _networkHandler;
+    [SerializeField] LobbyHandler _networkHandler;
 
     [Header("Panels")]
     [SerializeField] GameObject _initialPanel;

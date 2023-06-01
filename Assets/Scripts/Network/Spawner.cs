@@ -8,16 +8,18 @@ using System;
 public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
 {
     [SerializeField] NetworkPlayer _playerPrefab;
-
+    [SerializeField] Transform spawnPoint;
     CharacterInputHandler _characterInputHandler;
 
+ 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player) 
-    { 
+    {
+        Debug.Log("AAsda ds");
         if (runner.IsServer)
         {
             Debug.Log("[Custom Msg] Player Joined, I´m the Host");
 
-            runner.Spawn(_playerPrefab, null, null, player);
+            runner.Spawn(_playerPrefab, spawnPoint.position, null, player);
         }
         else
         {

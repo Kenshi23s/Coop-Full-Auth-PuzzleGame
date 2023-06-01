@@ -7,17 +7,19 @@ using System;
 using System.Threading.Tasks;
 using UnityEngine.SceneManagement;
 
-public class NetworkRunnerHandler : MonoBehaviour, INetworkRunnerCallbacks
+public class LobbyHandler : MonoBehaviour, INetworkRunnerCallbacks
 {
     [SerializeField] NetworkRunner _runnerPrefab;
     NetworkRunner _currentRunner;
 
     public event Action OnJoinedLobby;
 
+     
     public event Action<List<SessionInfo>> OnSessionListUpdate;
 
     void Start()
     {
+    
         JoinLobby();
     }
 
@@ -30,7 +32,9 @@ public class NetworkRunnerHandler : MonoBehaviour, INetworkRunnerCallbacks
 
         _currentRunner = Instantiate(_runnerPrefab);
 
+
         _currentRunner.AddCallbacks(this);
+
 
         var clientTask = JoinLobbyTask();
     }
@@ -52,6 +56,13 @@ public class NetworkRunnerHandler : MonoBehaviour, INetworkRunnerCallbacks
     }
 
     #endregion
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            CreateSession("A", "Level");
+        }
+    }
 
     #region CREATE/JOIN SESSION
 

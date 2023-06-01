@@ -5,7 +5,7 @@ using Fusion;
 
 public class SessionListHandler : MonoBehaviour
 {
-    [SerializeField] NetworkRunnerHandler _networkRunner;
+    [SerializeField] LobbyHandler _networkRunner;
 
     [SerializeField] Text _statusText;
 
