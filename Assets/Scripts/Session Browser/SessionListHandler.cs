@@ -35,16 +35,16 @@ public class SessionListHandler : MonoBehaviour
 
     void ReceiveSessionList(List<SessionInfo> newSessionList)
     {
-        //Limpiamos la lista de sesiones previamente creadas
+        //limpiamos la lista de sesiones creadas antes
         ClearSessionList();
 
-        //Si no tenemos sesiones
+        //si no hay
         if (newSessionList.Count == 0)
         {
             //Mostramos el texto diciendo que no se encontraron
             NoSessionsFound();
         }
-        else //Sino
+        else
         {
             //Agregamos cada sesion a la lista
             foreach (var session in newSessionList)
@@ -68,9 +68,7 @@ public class SessionListHandler : MonoBehaviour
 
         newSessionItem.OnJoinSession += JoinSelectedSession;
     }
-
-    //Cuando se clickee el boton de Join en una sesion que tiene el buscador
-    //se va a ejecutar este metodo ya que lo registramos al evento dentro del Item
+    
     void JoinSelectedSession(SessionInfo session)
     {
         _networkRunner.JoinSession(session);

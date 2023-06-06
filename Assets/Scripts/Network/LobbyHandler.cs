@@ -13,6 +13,7 @@ public class LobbyHandler : MonoBehaviour, INetworkRunnerCallbacks
     NetworkRunner _currentRunner;
 
     public event Action OnJoinedLobby;
+    public event Action OnFailedJoinLobby;
 
      
     public event Action<List<SessionInfo>> OnSessionListUpdate;
@@ -46,6 +47,8 @@ public class LobbyHandler : MonoBehaviour, INetworkRunnerCallbacks
         if (!result.Ok)
         {
             Debug.LogError("[Custom Error] Unable to Join Lobby");
+            //evento que vuelva al panel q aparece para unirse al lobby
+            OnFailedJoinLobby?.Invoke();
         }
         else
         {
@@ -56,13 +59,7 @@ public class LobbyHandler : MonoBehaviour, INetworkRunnerCallbacks
     }
 
     #endregion
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            CreateSession("A", "Level");
-        }
-    }
+   
 
     #region CREATE/JOIN SESSION
 
@@ -105,20 +102,7 @@ public class LobbyHandler : MonoBehaviour, INetworkRunnerCallbacks
 
     public void OnSessionListUpdated(NetworkRunner runner, List<SessionInfo> sessionList)
     {
-        OnSessionListUpdate?.Invoke(sessionList);
-
-        //Si hay alguna sesion ya creada, nos conectamos. Sino creamos una sala
-
-        //if (sessionList.Count > 0)
-        //{
-        //    SessionInfo session = sessionList[0];
-
-        //    JoinSession(session);
-        //}
-        //else
-        //{
-        //    CreateSession("Custom Game", "Game");
-        //}
+        OnSessionListUpdate?.Invoke(sessionList);       
     }
 
     #region Unused Callbacks

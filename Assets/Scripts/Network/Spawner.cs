@@ -14,7 +14,7 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
  
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player) 
     {
-        Debug.Log("AAsda ds");
+        Debug.Log("Entro a OnPlayerJoined");
         if (runner.IsServer)
         {
             Debug.Log("[Custom Msg] Player Joined, I´m the Host");

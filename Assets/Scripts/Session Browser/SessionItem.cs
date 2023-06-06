@@ -13,6 +13,12 @@ public class SessionItem : MonoBehaviour
 
     public event Action<SessionInfo> OnJoinSession;
 
+
+    private void Start()
+    {
+        _joinButton.onClick.AddListener(OnClick);
+    }
+
     public void SetSessionInfo(SessionInfo session)
     {
         _sessionInfo = session;
@@ -21,11 +27,10 @@ public class SessionItem : MonoBehaviour
 
         _playerCountText.text = $"{_sessionInfo.PlayerCount}/{_sessionInfo.MaxPlayers}";
 
-        //_joinButton.enabled = (_sessionInfo.PlayerCount < _sessionInfo.MaxPlayers) ? true : false;
         _joinButton.enabled = _sessionInfo.PlayerCount < _sessionInfo.MaxPlayers;
     }
 
-    public void OnClick()
+    void OnClick()
     {
         OnJoinSession?.Invoke(_sessionInfo);
     }

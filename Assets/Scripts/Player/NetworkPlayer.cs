@@ -6,7 +6,7 @@ using System.Linq;
 public class NetworkPlayer : NetworkBehaviour
 {
     public static NetworkPlayer Local { get; private set; }
-    Vector3 moveDir= Vector3.zero;
+    Vector3 moveDir = Vector3.zero;
 
     [Networked(OnChanged = nameof(OnNicknameChanged))]
     NetworkString<_16> Nickname { get; set; }
@@ -22,7 +22,7 @@ public class NetworkPlayer : NetworkBehaviour
 
     private void Awake()
     {
-        _handler  = GetComponent<CharacterInputHandler>();
+        _handler = GetComponent<CharacterInputHandler>();
         _movement = GetComponent<NetworkCharacterControllerCustom>();
     }
     public override void Spawned()
@@ -33,34 +33,25 @@ public class NetworkPlayer : NetworkBehaviour
     private void Update()
     {
         NetworkInputData inputs = _handler.GetInputs();
-        _movement.Move(new Vector3(inputs.movementInput,0));
+        _movement.Move(new Vector3(inputs.movementInput, 0));
 
         if (inputs.isJumpPressed) _movement.Jump();
 
         if (inputs.isInteractPressed) NearestInteractable();
-
-
     }
-
 
     void NearestInteractable()
     {
         Collider col = Physics.OverlapSphere(transform.position, interactRadius)
             .Where(x => x.GetComponent<Iinteractable>() != null)
             .OrderByDescending(x => Vector3.Distance(x.transform.position, transform.position))
-            .First(); 
+            .First();
 
         if (col.TryGetComponent(out Iinteractable y)) y.Interact(this);
-        
     }
 
     public override void FixedUpdateNetwork()
     {
-       
-        
-        
-        
-
     }
     #region NickName
 
@@ -75,11 +66,11 @@ public class NetworkPlayer : NetworkBehaviour
             //cambiar esto en vez de spawned q sea altocar boton
             RPC_SetNickname("user");
         }
-        else if (Object.HasStateAuthority && !Object.HasInputAuthority)       
-            newColor = Color.yellow;      
-        else        
+        else if (Object.HasStateAuthority && !Object.HasInputAuthority)
+            newColor = Color.yellow;
+        else
             newColor = Color.red;
-        
+
 
         GetComponentInChildren<SkinnedMeshRenderer>().material.color = newColor;
     }

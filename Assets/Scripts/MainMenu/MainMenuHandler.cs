@@ -14,30 +14,37 @@ public class MainMenuHandler : MonoBehaviour
     [SerializeField] GameObject _hostGamePanel;
 
     [Header("Buttons")]
-    [SerializeField] Button _joinLobbyBTN;
-    [SerializeField] Button _openHostBTN;
-    [SerializeField] Button _hostGameBTN;
+    [SerializeField] Button _joinLobbyButton;
+    [SerializeField] Button _openHostButton;
+    [SerializeField] Button _hostGameButton;
 
     [Header("Inputfields")]
     [SerializeField] InputField _hostSessionName;
 
     [Header("Texts")]
     [SerializeField] Text _statusText;
+    [SerializeField] Text _failedConnectionText;
 
     void Start()
-    {
-        //A cada boton que tenemos le agregamos por codigo el metodo que deberian ejecutar cuando son clickeados
-        _joinLobbyBTN.onClick.AddListener(BTN_JoinLobby);
-        _openHostBTN.onClick.AddListener(BTN_ShowHostPanel);
-        _hostGameBTN.onClick.AddListener(BTN_CreateGameSession);
+    {        
+        _joinLobbyButton.onClick.AddListener(BTN_JoinLobby);
+        _openHostButton.onClick.AddListener(BTN_ShowHostPanel);
+        _hostGameButton.onClick.AddListener(BTN_CreateGameSession);
 
-        //Cuando el Network Runner se termine de conectar al Lobby
-        //Le decimos mediante la suscripcion al evento que apague el Panel de Status y prenda el Browser
+        //cuando el NR se termine de conectar al Lobby        
         _networkHandler.OnJoinedLobby += () =>
         {
             _statusPanel.SetActive(false);
             _browserPanel.SetActive(true);
         };
+
+        //cuando falla el unirse al lobby
+        _networkHandler.OnFailedJoinLobby += () =>
+         {
+             _statusPanel.SetActive(false);
+             _initialPanel.SetActive(true);
+             _failedConnectionText.gameObject.SetActive(true);
+         };
     }
 
     #region Button Methods
@@ -62,7 +69,7 @@ public class MainMenuHandler : MonoBehaviour
 
     void BTN_CreateGameSession()
     {
-        _networkHandler.CreateSession(_hostSessionName.text, "Game");
+        _networkHandler.CreateSession(_hostSessionName.text, "Level");
     }
 
     #endregion
