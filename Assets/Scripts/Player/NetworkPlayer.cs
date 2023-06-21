@@ -13,12 +13,18 @@ public class NetworkPlayer : NetworkBehaviour
 
     CharacterInputHandler _handler;
     NetworkCharacterControllerCustom _movement;
-    NicknameText _myNickname;
+     NicknameText _myNickname;
 
     float interactRadius;
     Color newColor;
 
     public event Action OnLeft = delegate { };
+
+    public CharacterInputHandler GetInputHandler()
+    {
+        return GetComponent<CharacterInputHandler>();
+    }
+
 
     private void Awake()
     {
@@ -28,6 +34,7 @@ public class NetworkPlayer : NetworkBehaviour
     public override void Spawned()
     {
         SetNickname();
+        
     }
 
     private void Update()

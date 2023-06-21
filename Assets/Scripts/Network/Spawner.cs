@@ -8,28 +8,41 @@ using System;
 public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
 {
     [SerializeField] NetworkPlayer _playerPrefab;
-    [SerializeField] Transform spawnPoint;
     CharacterInputHandler _characterInputHandler;
 
- 
-    public void OnPlayerJoined(NetworkRunner runner, PlayerRef player) 
+
+    //Callback que se recibe cuando entra un nuevo Cliente a la sala
+    public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
-        Debug.Log("Entro a OnPlayerJoined");
         if (runner.IsServer)
         {
-            Debug.Log("[Custom Msg] Player Joined, I´m the Host");
-
-            runner.Spawn(_playerPrefab, spawnPoint.position, null, player);
+            Debug.Log(_playerPrefab);
+            Debug.Log("Player Joined, I'm the server/host");
+            runner.Spawn(_playerPrefab, null, null, player);
         }
         else
         {
-            Debug.Log("[Custom Msg] Player Joined, I´m not the Host");
+            Debug.Log("Player Joined, I'm not the server/host");
         }
     }
 
-    public void OnInput(NetworkRunner runner, NetworkInput input) 
+    public void OnInput(NetworkRunner runner, NetworkInput input)
     {
+        if (!NetworkPlayer.Local) return;
 
+        if (!_characterInputHandler)
+        {
+            _characterInputHandler = NetworkPlayer.Local.GetInputHandler();
+        }
+        else
+        {
+            input.Set(_characterInputHandler.GetInputs());
+        }
+    }
+
+    public void OnDisconnectedFromServer(NetworkRunner runner)
+    {
+        runner.Shutdown();
     }
 
     #region Unused Callbacks
@@ -44,7 +57,7 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
 
     public void OnCustomAuthenticationResponse(NetworkRunner runner, Dictionary<string, object> data) { }
 
-    public void OnDisconnectedFromServer(NetworkRunner runner) { }
+ 
 
     public void OnHostMigration(NetworkRunner runner, HostMigrationToken hostMigrationToken) { }
 

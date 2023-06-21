@@ -11,11 +11,15 @@ public class CharacterMovementHandler : NetworkBehaviour
 
     NetworkMecanimAnimator _animator;
 
-    [SerializeField] Transform spawnPoint;
 
     float _moveValue;
 
     private void Awake()
+    {
+       
+      
+    }
+    public override void Spawned()
     {
         _characterControllerCustom = GetComponent<NetworkCharacterControllerCustom>();
         var lifeHandler = GetComponent<LifeHandler>();
@@ -23,6 +27,7 @@ public class CharacterMovementHandler : NetworkBehaviour
         lifeHandler.OnDeadState += SetControllerEnabled;
         lifeHandler.OnRespawn += Respawn;
     }
+
 
     public override void FixedUpdateNetwork()
     {
@@ -59,7 +64,7 @@ public class CharacterMovementHandler : NetworkBehaviour
     void Respawn()
     {
         //pasarle el spawn point en vez de transform.position
-        _characterControllerCustom.TeleportToPosition(spawnPoint.position);
+        
     }
 
     void SetControllerEnabled(bool enable)

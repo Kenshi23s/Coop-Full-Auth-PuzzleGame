@@ -1,8 +1,9 @@
+using Fusion;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent(typeof(DebugableObject))]
-public class CharacterInputHandler : MonoBehaviour
+
+public class CharacterInputHandler : NetworkBehaviour
 {
     DebugableObject _debug;
     float _movementInput;
@@ -13,7 +14,7 @@ public class CharacterInputHandler : MonoBehaviour
     NetworkInputData _inputData;
     private void Awake()
     {
-        _debug = GetComponent<DebugableObject>();
+        
         _inputData = new NetworkInputData();
     }
     void Start()
@@ -24,7 +25,7 @@ public class CharacterInputHandler : MonoBehaviour
     void Update()
     {
        
-        _debug.Log(_movementInput.ToString());
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             _isJumpPressed = true;
