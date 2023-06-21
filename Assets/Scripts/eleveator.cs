@@ -19,11 +19,12 @@ public class eleveator : MonoBehaviour
        
         if (Input.GetKeyDown(KeyCode.R)&&!rotating)
         {
-            StartRotation(true);
             rotating = true;
+            update = null;
+            StartRotation(true);
             Debug.Log("KeyPress");
         }
-        update.Invoke();
+        update?.Invoke();
     }
 
     public void StartRotation(bool x)
@@ -49,13 +50,5 @@ public class eleveator : MonoBehaviour
         }
     }
 
-    private void OnValidate()
-    {
-        desiredRotation = new Vector3(0, 0, transform.rotation.eulerAngles.z + 90f+1);
-        if (!Application.isPlaying)
-        {
-            RotateTowards();
-        }
-        
-    }
+  
 }
