@@ -56,7 +56,8 @@ public class MainMenuHandler : MonoBehaviour
 
     void BTN_JoinLobby()
     {
-        PlayerPrefs.SetString("PlayerNickname", _nicknameInputField.text);
+        string x = VocabularyManager.ValidNickname(_nicknameInputField.text);
+        PlayerPrefs.SetString("PlayerNickname", x);
         PlayerPrefs.Save();
 
         _networkHandler.JoinLobby();
