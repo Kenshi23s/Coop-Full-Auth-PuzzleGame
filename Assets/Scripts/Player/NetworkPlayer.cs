@@ -6,13 +6,13 @@ using System.Linq;
 public class NetworkPlayer : NetworkBehaviour
 {
     public static NetworkPlayer Local { get; private set; }
-    Vector3 moveDir = Vector3.zero;
+  
 
     [Networked(OnChanged = nameof(OnNicknameChanged))]
     NetworkString<_16> Nickname { get; set; }
 
     CharacterInputHandler _handler;
-    NetworkCharacterControllerCustom _movement;
+ 
      NicknameText _myNickname;
 
     float interactRadius;
@@ -29,22 +29,18 @@ public class NetworkPlayer : NetworkBehaviour
     private void Awake()
     {
         _handler = GetComponent<CharacterInputHandler>();
-        _movement = GetComponent<NetworkCharacterControllerCustom>();
+     
     }
     public override void Spawned()
     {
-        SetNickname();
         
+
     }
 
     private void Update()
     {
-        NetworkInputData inputs = _handler.GetInputs();
-        _movement.Move(new Vector3(inputs.movementInput, 0));
 
-        if (inputs.isJumpPressed) _movement.Jump();
-
-        if (inputs.isInteractPressed) NearestInteractable();
+        GameManager.instance.SetCamera(this);
     }
 
     void NearestInteractable()
@@ -59,6 +55,17 @@ public class NetworkPlayer : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
+        //Debug.Log("FixedUpdatePlayer");
+        //NetworkInputData inputs = _handler.GetInputs();
+
+        //Vector3 dir =Vector3.right * inputs.movementInput;
+
+
+        //_movement.Move(dir);
+
+        //if (inputs.isJumpPressed) _movement.Jump();
+
+        //if (inputs.isInteractPressed) NearestInteractable();
     }
     #region NickName
 

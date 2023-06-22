@@ -8,7 +8,7 @@ using Fusion;
 public class CharacterMovementHandler : NetworkBehaviour
 {
     NetworkCharacterControllerCustom _characterControllerCustom;
-
+    CharacterInputHandler handler;
     NetworkMecanimAnimator _animator;
 
 
@@ -23,40 +23,45 @@ public class CharacterMovementHandler : NetworkBehaviour
     {
         _characterControllerCustom = GetComponent<NetworkCharacterControllerCustom>();
         var lifeHandler = GetComponent<LifeHandler>();
+        handler = GetComponent<CharacterInputHandler>();
 
-        lifeHandler.OnDeadState += SetControllerEnabled;
-        lifeHandler.OnRespawn += Respawn;
+        //lifeHandler.OnDeadState += SetControllerEnabled;
+        //lifeHandler.OnRespawn += Respawn;
     }
 
 
     public override void FixedUpdateNetwork()
     {
+       
         GeneralMovement();
     }
 
     void GeneralMovement()
     {
-        if (GetInput(out NetworkInputData networkInputData))
-        {
+        NetworkInputData networkInputData = handler.GetInputs();
+        
             //Move
+          
             Vector3 moveDir = Vector3.forward * networkInputData.movementInput;
+            Debug.Log("me quiero mover hacia"+moveDir);
+           _characterControllerCustom.Move(moveDir);
 
-            _characterControllerCustom.Move(moveDir);
 
-            //Jump
+        //Jump
 
-            if (networkInputData.isJumpPressed)
-            {
-                _characterControllerCustom.Jump();
-            }
+        if (networkInputData.isJumpPressed)
+        {
+             _characterControllerCustom.Jump();
+        }
 
             //Animator
 
-            _moveValue = _characterControllerCustom.Velocity.x;
+            
 
-            //cambiar nombre por el parametro del animator
-            _animator.Animator.SetFloat("", _moveValue);
-        }
+        //cambiar nombre por el parametro del animator
+        //_animator.Animator.SetFloat("", _moveValue);
+       
+
     }
 
     //falta asignar

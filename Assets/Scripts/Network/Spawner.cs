@@ -16,9 +16,8 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
     {
         if (runner.IsServer)
         {
-            Debug.Log(_playerPrefab);
-            Debug.Log("Player Joined, I'm the server/host");
-            runner.Spawn(_playerPrefab, null, null, player);
+            
+            runner.Spawn(_playerPrefab, Vector3.zero, null, player);
         }
         else
         {

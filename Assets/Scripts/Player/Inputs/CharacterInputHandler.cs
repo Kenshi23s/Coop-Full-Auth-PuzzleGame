@@ -24,8 +24,10 @@ public class CharacterInputHandler : NetworkBehaviour
 
     void Update()
     {
-       
-        
+
+        _movementInput = Input.GetAxisRaw("Horizontal");
+
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             _isJumpPressed = true;
@@ -38,8 +40,9 @@ public class CharacterInputHandler : NetworkBehaviour
 
     public NetworkInputData GetInputs()
     {
-        _debug.Log("Doy mis Inputs");
+        Debug.Log("Doy mis Inputs");
         _inputData.movementInput = _movementInput;
+  
 
         _inputData.isJumpPressed = _isJumpPressed;
         _isJumpPressed = false;       

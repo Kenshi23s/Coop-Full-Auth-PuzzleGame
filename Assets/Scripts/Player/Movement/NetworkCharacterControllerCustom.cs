@@ -1,6 +1,7 @@
 using System;
 using Fusion;
 using UnityEngine;
+using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 [RequireComponent(typeof(CharacterController))]
 [OrderBefore(typeof(NetworkTransform))]
@@ -98,9 +99,7 @@ public class NetworkCharacterControllerCustom : NetworkTransform
         var moveVelocity = Velocity;
 
         if (direction.sqrMagnitude > 1)
-        {
             direction = direction.normalized;
-        }
 
         if (IsGrounded && moveVelocity.y < 0)
         {
@@ -109,8 +108,9 @@ public class NetworkCharacterControllerCustom : NetworkTransform
 
         moveVelocity.y += gravity * Runner.DeltaTime;
 
-        var horizontalVel = default(Vector3);       
-        horizontalVel.z = moveVelocity.x;
+        var horizontalVel = default(Vector3);
+        horizontalVel.x = moveVelocity.x;
+        horizontalVel.z = moveVelocity.z;
 
         if (direction == default)
         {
@@ -118,13 +118,18 @@ public class NetworkCharacterControllerCustom : NetworkTransform
         }
         else
         {
-            horizontalVel = Vector3.ClampMagnitude(horizontalVel + direction * acceleration * deltaTime, maxSpeed);
+            Debug.Log("horizontal+speed = "+ horizontalVel+direction);
+            Debug.Log("horizontal + speed * velocidades ="+ horizontalVel + direction * acceleration);
+            horizontalVel = Vector3.ClampMagnitude(horizontalVel + direction * acceleration, maxSpeed);
+           
 
-            transform.rotation = Quaternion.Euler(Vector3.up * 90 * MathF.Sign(direction.z));
+            transform.rotation = Quaternion.Euler(Vector3.up * 90 * Mathf.Sign(direction.z));
         }
 
-        moveVelocity.x = horizontalVel.z;
-       
+        moveVelocity.x = horizontalVel.x;
+        moveVelocity.z = horizontalVel.z;
+
+        Debug.Log("me muevo hacia" +  moveVelocity);
         Controller.Move(moveVelocity * deltaTime);
 
         Velocity = (transform.position - previousPos) * Runner.Simulation.Config.TickRate;
