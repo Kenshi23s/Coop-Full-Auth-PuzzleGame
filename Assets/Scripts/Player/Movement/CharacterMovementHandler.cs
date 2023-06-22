@@ -24,6 +24,7 @@ public class CharacterMovementHandler : NetworkBehaviour
         _characterControllerCustom = GetComponent<NetworkCharacterControllerCustom>();
         var lifeHandler = GetComponent<LifeHandler>();
         handler = GetComponent<CharacterInputHandler>();
+        _animator = GetComponent<NetworkMecanimAnimator>();
 
         //lifeHandler.OnDeadState += SetControllerEnabled;
         //lifeHandler.OnRespawn += Respawn;

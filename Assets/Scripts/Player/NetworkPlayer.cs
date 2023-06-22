@@ -121,6 +121,7 @@ public class NetworkPlayer : NetworkBehaviour
 
     void UpdateNickname(string newName)
     {
+        return;
         _myNickname.UpdateText(newName);
     }
 

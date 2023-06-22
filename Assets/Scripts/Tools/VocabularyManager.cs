@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class VocabularyManager : MonoBehaviour
 {
-    
+
+
 
     [SerializeField] List<string> addBannedWord = new List<string>();
 
@@ -21,7 +22,7 @@ public class VocabularyManager : MonoBehaviour
     private void Awake()
     {
         AddBadWords();
-        BannedWords.Concat(addBannedWord);
+        BannedWords = BannedWords.Concat(addBannedWord).ToList();
 
     }
 
