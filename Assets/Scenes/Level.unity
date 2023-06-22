@@ -175,7 +175,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh52040
+  m_Name: pb_Mesh33748
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -431,7 +431,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh51964
+  m_Name: pb_Mesh33660
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3586,7 +3586,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh52060
+  m_Name: pb_Mesh33768
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3785,7 +3785,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh51988
+  m_Name: pb_Mesh33684
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4819,7 +4819,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh51668
+  m_Name: pb_Mesh33386
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6515,6 +6515,8 @@ GameObject:
   - component: {fileID: 1620664852}
   - component: {fileID: 1620664854}
   - component: {fileID: 1620664855}
+  - component: {fileID: 1620664857}
+  - component: {fileID: 1620664856}
   m_Layer: 0
   m_Name: Gamemanager
   m_TagString: Untagged
@@ -6576,8 +6578,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b99e0a7551907ea4c9d888538b5c0360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefabVariant1: {fileID: 0}
-  _prefabVariant2: {fileID: 0}
+  _prefabVariant1: {fileID: 6240063103652867580, guid: 12cbdfdd69c15f24a803c8da6389826e, type: 3}
+  _prefabVariant2: {fileID: 6957673422411315651, guid: f047257683ccfe34e8f2afc7a251f3d9, type: 3}
 --- !u!114 &1620664855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6601,6 +6603,39 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours: []
   SimulationBehaviours: []
+--- !u!114 &1620664856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620664851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa3f991b5feb87c478a8d6cfbf225567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parameters:
+    x_Spread: 0.426
+    speed: 0.17
+    fadeSpeed: 0.347
+  sampleFloatingText: {fileID: 3319472181107479526, guid: 66575a08bc06ba446b63d5ebbfa07426, type: 3}
+--- !u!114 &1620664857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620664851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f830817140a1dc4a9166eb966d39e57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canDebug: 1
+  gizmoDraw:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1668012698
 GameObject:
   m_ObjectHideFlags: 0
@@ -13383,6 +13418,10 @@ PrefabInstance:
       propertyPath: TPTo
       value: 
       objectReference: {fileID: 1711636870}
+    - target: {fileID: 246561266635303222, guid: f0ac7246b9c49db408f4b9ae4cd15a1e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0ac7246b9c49db408f4b9ae4cd15a1e, type: 3}
 --- !u!1001 &603695252358740619
