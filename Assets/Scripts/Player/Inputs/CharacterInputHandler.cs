@@ -38,6 +38,7 @@ public class CharacterInputHandler : NetworkBehaviour
         }
     }
 
+    
     public NetworkInputData GetInputs()
     {
         Debug.Log("Doy mis Inputs");

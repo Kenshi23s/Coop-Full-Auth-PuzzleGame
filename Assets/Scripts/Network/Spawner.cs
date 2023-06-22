@@ -7,23 +7,33 @@ using System;
 
 public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
 {
-    [SerializeField] NetworkPlayer _playerPrefab;
+    [SerializeField] NetworkPlayer _prefabVariant1;
+    [SerializeField] NetworkPlayer _prefabVariant2;
     CharacterInputHandler _characterInputHandler;
 
-
+    int count=0;
     //Callback que se recibe cuando entra un nuevo Cliente a la sala
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
         if (runner.IsServer)
         {
             
-            runner.Spawn(_playerPrefab, Vector3.zero, null, player);
+            var z = runner.Spawn(GetVariant(count), Vector3.zero, null, player);
+            z.SetElement(count == 0 ? Element.Fire : Element.Water);
+            count++;
         }
         else
         {
             Debug.Log("Player Joined, I'm not the server/host");
         }
     }
+
+    NetworkPlayer GetVariant(int x)
+    {
+        return x == 0 ? _prefabVariant1 : _prefabVariant2;
+    }
+
+    
 
     public void OnInput(NetworkRunner runner, NetworkInput input)
     {

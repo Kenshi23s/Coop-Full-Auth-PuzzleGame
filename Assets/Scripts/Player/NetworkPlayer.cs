@@ -2,6 +2,7 @@ using UnityEngine;
 using Fusion;
 using System;
 using System.Linq;
+using FacundoColomboMethods;
 
 public class NetworkPlayer : NetworkBehaviour
 {
@@ -12,13 +13,16 @@ public class NetworkPlayer : NetworkBehaviour
     NetworkString<_16> Nickname { get; set; }
 
     CharacterInputHandler _handler;
- 
+
+    [SerializeField]GameObject view;
      NicknameText _myNickname;
 
     float interactRadius;
     Color newColor;
 
     public event Action OnLeft = delegate { };
+
+   public LifeHandler lifeHandler;
 
     public CharacterInputHandler GetInputHandler()
     {
@@ -29,18 +33,31 @@ public class NetworkPlayer : NetworkBehaviour
     private void Awake()
     {
         _handler = GetComponent<CharacterInputHandler>();
-     
+        lifeHandler = GetComponent<LifeHandler>();
+    }
+
+    public void SetElement(Element x)
+    {
+        Tuple<LayerMask,Material> data  = LayerManager.instance.GetElementData(x);
+        gameObject.layer = data.Item1.LayerMaskToLayerNumber();
+        view.GetComponent<Renderer>().material = data.Item2;
     }
     public override void Spawned()
     {
+       
+        if (!HasInputAuthority) return;
         
 
-    }
+        update += () => GameManager.instance.SetCamera(this);
+        Local = this;
+        
+      
 
+    }
+    Action update;
     private void Update()
     {
-
-        GameManager.instance.SetCamera(this);
+        update?.Invoke();
     }
 
     void NearestInteractable()
