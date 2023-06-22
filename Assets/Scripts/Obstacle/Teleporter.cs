@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using UnityEngine;
 [RequireComponent(typeof(DebugableObject))]
 public class Teleporter : MonoBehaviour ,Iinteractable
@@ -5,11 +6,14 @@ public class Teleporter : MonoBehaviour ,Iinteractable
 
     [SerializeField]
     Teleporter TPTo;
+    DebugableObject debug;
 
     public void Interact(NetworkPlayer whoInteracted)
     {
-        if (TPTo == null) return;
-        
+        if (TPTo == null) 
+        {
+            return;
+        }
         whoInteracted.transform.position = new Vector3(TPTo.transform.position.x, 
                                                        TPTo.transform.position.y,
                                                        whoInteracted.transform.position.z);
@@ -17,7 +21,8 @@ public class Teleporter : MonoBehaviour ,Iinteractable
 
     private void Awake()
     {
-        GetComponent<DebugableObject>().AddGizmoAction(DrawLineToTp);
+        debug = GetComponent<DebugableObject>();
+        debug.AddGizmoAction(DrawLineToTp);
     }
 
 

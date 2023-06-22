@@ -6,6 +6,7 @@ using UnityEngine;
 using System.Net;
 using Unity.VisualScripting;
 using Fusion;
+using FacundoColomboMethods;
 [RequireComponent(typeof(NetworkObject))]
 [RequireComponent(typeof(Collider))]
 public class Obstacle : NetworkBehaviour
@@ -23,7 +24,9 @@ public class Obstacle : NetworkBehaviour
 
     void SetElement()
     {
-        Tuple<LayerMask, Material> x = LayerManager.instance.GetLayer(myElement);
+        Tuple<LayerMask, Material> x = LayerManager.instance.GetElementData(myElement);
+        gameObject.layer = x.Item1.LayerMaskToLayerNumber();
+        GetComponent<Renderer>().material = x.Item2;
     
     }
     // Update is called once per frame
@@ -56,8 +59,40 @@ public class Obstacle : NetworkBehaviour
 
 
     }
+
+    NetworkPlayer aux;
+    IEnumerator DamageCoroutine()
+    {
+        WaitForSeconds wait = new WaitForSeconds(0.3f);
+        while (aux!=null)
+        {
+            aux.lifeHandler.TakeDamage(1);
+            yield return wait;
+        }
+     
+    }
     private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.TryGetComponent(out NetworkPlayer player))
+        {
+            if (player.gameObject.layer!=gameObject.layer)
+            {
+                aux = player;
+                StartCoroutine(DamageCoroutine());
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.TryGetComponent(out NetworkPlayer player))
+        {
+            if (aux!=null&& aux ==player )
+            {
+                
+                StopAllCoroutines();
+                aux = null;
+            }
+        }
     }
 }
