@@ -9,11 +9,12 @@ public class LifeHandler : NetworkBehaviour
 
     DebugableObject _debug;
     const byte FULL_LIFE = 100;
-       
+
+    [Networked]
     byte _currentLife { get; set; }
 
     [Networked(OnChanged = nameof(OnStateChanged))]
-    bool _isDead {get; set; }
+    bool _isDead { get; set; }
 
     public bool IsDead => _isDead;
 
@@ -32,9 +33,11 @@ public class LifeHandler : NetworkBehaviour
     {
         _currentLife = FULL_LIFE;
     }
-
-    public void TakeDamage(byte dmg)
+    [Rpc(RpcSources.All,RpcTargets.StateAuthority)]
+    public void RPC_TakeDamage(byte dmg)
     {
+        if (!HasStateAuthority) return;
+    
         if (_isDead) return;
 
         if (dmg > _currentLife)
@@ -42,6 +45,8 @@ public class LifeHandler : NetworkBehaviour
 
         _debug.Log($"recibi {dmg}, mi vida actual es{_currentLife}");
         _currentLife -= dmg;
+        FloatingTextManager.instance.PopUpText(dmg.ToString(), transform.position);
+
 
 
         if (_currentLife == 0)
