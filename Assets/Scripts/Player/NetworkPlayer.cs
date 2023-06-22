@@ -44,14 +44,14 @@ public class NetworkPlayer : NetworkBehaviour
     }
     public override void Spawned()
     {
+        SetNickname(PlayerPrefs.GetString("PlayerNickname"));
        
         if (!HasInputAuthority) return;
         
 
         update += () => GameManager.instance.SetCamera(this);
         Local = this;
-        
-      
+
 
     }
     Action update;
@@ -86,7 +86,7 @@ public class NetworkPlayer : NetworkBehaviour
     }
     #region NickName
 
-    void SetNickname()
+    void SetNickname(string nickname)
     {
         if (Object.HasInputAuthority)
         {
@@ -95,7 +95,7 @@ public class NetworkPlayer : NetworkBehaviour
             newColor = Color.blue;
 
             //cambiar esto en vez de spawned q sea altocar boton
-            RPC_SetNickname("user");
+            RPC_SetNickname(nickname);
         }
         else if (Object.HasStateAuthority && !Object.HasInputAuthority)
             newColor = Color.yellow;

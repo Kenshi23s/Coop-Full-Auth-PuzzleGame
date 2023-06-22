@@ -18,12 +18,6 @@ public class LobbyHandler : MonoBehaviour, INetworkRunnerCallbacks
      
     public event Action<List<SessionInfo>> OnSessionListUpdate;
 
-    void Start()
-    {
-    
-        JoinLobby();
-    }
-
     #region LOBBY
 
     //Lo agregamos a un boton luego

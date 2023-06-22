@@ -49,11 +49,15 @@ public class CharacterMovementHandler : NetworkBehaviour
             if (data.isJumpPressed)
             {
                 _characterControllerCustom.Jump();
+                _animator.Animator.SetBool("isJumping", true);
             }
+            else
+                _animator.Animator.SetBool("isJumping", false);
+
         }
         //Animator
         //cambiar nombre por el parametro del animator
-        //_animator.Animator.SetFloat("", _moveValue);
+        _animator.Animator.SetFloat("isMoving", _moveValue);
     }
 
     //falta asignar

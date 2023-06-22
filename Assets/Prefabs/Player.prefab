@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8708805349627653962}
   - component: {fileID: 9099805070337761448}
   - component: {fileID: 6619596737940015890}
+  - component: {fileID: 840796820508961099}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -148,6 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
   view: {fileID: 8708805351055588393}
+  lifeHandler: {fileID: 6619596737940015890}
 --- !u!114 &9099805070337761448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,6 +177,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
   _view: {fileID: 8708805351055588393}
+--- !u!114 &840796820508961099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8708805349627653963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f830817140a1dc4a9166eb966d39e57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canDebug: 1
+  gizmoDraw:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8708805351055588393
 GameObject:
   m_ObjectHideFlags: 0

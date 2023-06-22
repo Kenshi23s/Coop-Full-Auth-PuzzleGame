@@ -20,13 +20,18 @@ public class MainMenuHandler : MonoBehaviour
 
     [Header("Inputfields")]
     [SerializeField] InputField _hostSessionName;
+    [SerializeField] InputField _nicknameInputField;
 
     [Header("Texts")]
     [SerializeField] Text _statusText;
     [SerializeField] Text _failedConnectionText;
 
     void Start()
-    {        
+    {
+        if (PlayerPrefs.HasKey("PlayerNickname"))
+            _nicknameInputField.text = PlayerPrefs.GetString("PlayerNickname");
+
+
         _joinLobbyButton.onClick.AddListener(BTN_JoinLobby);
         _openHostButton.onClick.AddListener(BTN_ShowHostPanel);
         _hostGameButton.onClick.AddListener(BTN_CreateGameSession);
@@ -51,6 +56,9 @@ public class MainMenuHandler : MonoBehaviour
 
     void BTN_JoinLobby()
     {
+        PlayerPrefs.SetString("PlayerNickname", _nicknameInputField.text);
+        PlayerPrefs.Save();
+
         _networkHandler.JoinLobby();
 
         _initialPanel.SetActive(false);
