@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     {
 
         Camera.main.transform.position = player.transform.position + Vector3.back * zOffset;
-        Camera.main.transform.forward = (player.transform.forward - Camera.main.transform.position).normalized;
+        Camera.main.transform.forward = (player.transform.position - Camera.main.transform.position).normalized;
        
     }  
     

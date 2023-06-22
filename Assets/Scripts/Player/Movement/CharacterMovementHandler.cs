@@ -30,21 +30,26 @@ public class CharacterMovementHandler : NetworkBehaviour
     }
 
 
-    public override void FixedUpdateNetwork()
+    public override void FixedUpdateNetwork() 
     {
+        if (HasInputAuthority)
+        {
+            RPC_GeneralMovement();
+        }
        
-        GeneralMovement();
+
     }
 
-    void GeneralMovement()
+    [Rpc(RpcSources.InputAuthority,RpcTargets.StateAuthority)]
+    void RPC_GeneralMovement()
     {
         NetworkInputData networkInputData = handler.GetInputs();
-        
-            //Move
-          
-            Vector3 moveDir = Vector3.forward * networkInputData.movementInput;
-            Debug.Log("me quiero mover hacia"+moveDir);
-           _characterControllerCustom.Move(moveDir);
+        Vector3 moveDir = Vector3.right * networkInputData.movementInput;
+        _characterControllerCustom.Move(moveDir);
+        //Move
+
+
+        Debug.Log("me quiero mover hacia"+moveDir);
 
 
         //Jump
