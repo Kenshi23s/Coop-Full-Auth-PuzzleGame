@@ -66,7 +66,7 @@ public class Obstacle : NetworkBehaviour
         WaitForSeconds wait = new WaitForSeconds(0.3f);
         while (aux!=null)
         {
-            aux.lifeHandler.TakeDamage(1);
+            aux.lifeHandler.RPC_TakeDamage(1);
             yield return wait;
         }
      
