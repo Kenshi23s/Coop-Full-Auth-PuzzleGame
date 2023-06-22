@@ -1,15 +1,22 @@
+using Fusion;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : NetworkObject
 {
     public static bool runtime = false;
- 
+
+    public string WinScene;
+    public string LoseScene;
+
 
     public static GameManager instance;
+    public event Action OnGameEnd;
 
-   public float zOffset;
+    public float zOffset;
     
 
     // Start is called before the first frame update
@@ -39,4 +46,13 @@ public class GameManager : MonoBehaviour
     {
         
     }
+    [Rpc(RpcSources.All,RpcTargets.All)]
+    public void RPC_GAMEOVER(bool has_Won)
+    {
+        SceneManager.LoadScene(has_Won ? WinScene : LoseScene);
+        OnGameEnd?.Invoke();
+    }
+   
+
+    
 }

@@ -12,7 +12,7 @@ public class LayerManager : MonoBehaviour
     [SerializeField] LayerMask FireLayer, WaterLayer;
     [SerializeField] Material FireMaterial, WaterMaterial;
    
-    public Tuple<LayerMask,Material> GetLayer(Element i) => i == Element.Fire 
+    public Tuple<LayerMask,Material> GetElementData(Element i) => i == Element.Fire 
         ? Tuple.Create(FireLayer,FireMaterial) 
         : Tuple.Create(WaterLayer, WaterMaterial);
 
