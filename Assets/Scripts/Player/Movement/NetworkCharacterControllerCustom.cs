@@ -118,10 +118,9 @@ public class NetworkCharacterControllerCustom : NetworkTransform
         }
         else
         {
-            Debug.Log("horizontal+speed = "+ horizontalVel+direction);
-            Debug.Log("horizontal + speed * velocidades ="+ horizontalVel + (direction * acceleration * deltaTime));
+          
             horizontalVel = Vector3.ClampMagnitude(horizontalVel + direction * acceleration * deltaTime, maxSpeed);
-            Debug.Log("mi velocidad horizontal es"+horizontalVel);
+          
 
             transform.rotation = Quaternion.Euler(Vector3.up * 90 * Mathf.Sign(direction.z));
         }
@@ -129,7 +128,7 @@ public class NetworkCharacterControllerCustom : NetworkTransform
         moveVelocity.x = horizontalVel.x;
         moveVelocity.z = horizontalVel.z;
 
-        Debug.Log("le paso a controler move:" +  moveVelocity);
+     
         Controller.Move(moveVelocity * deltaTime);
 
         Velocity = (transform.position - previousPos) * Runner.Simulation.Config.TickRate;
