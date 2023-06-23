@@ -1,26 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-
-public class FreezeRotation : MonoBehaviour
+using Fusion;
+[RequireComponent(typeof(NetworkTransform))]
+public class FreezeRotation : NetworkBehaviour
 {
-
+    NetworkTransform ntwk_transform;
     private void Awake()
     {
-      
+        ntwk_transform = GetComponent<NetworkTransform>();
     }
 
-    private void Update()
+    public override void FixedUpdateNetwork()
     {
-     
-        transform.rotation = Quaternion.Euler(0, 0, 0);
-    }
-    IEnumerator Freeze()
-    {
-       
-        yield return new WaitForEndOfFrame();
-        transform.rotation = Quaternion.Euler(0, 0, 0);
-    }
-   
+        ntwk_transform.TeleportToRotation(Quaternion.Euler(0, 0, 0));
+    }   
 }

@@ -14,6 +14,7 @@ public class TriggerLever : MonoBehaviour,Iinteractable
     [SerializeField] bool available;
     DebugableObject _debug;
 
+   [SerializeField] bool button;
     private void Awake()
     {
         GetComponent<SphereCollider>().isTrigger = true;
@@ -22,6 +23,14 @@ public class TriggerLever : MonoBehaviour,Iinteractable
     }
 
 
+    private void Update()
+    {
+        if (button)
+        {
+            button = false;
+            Interact(default);
+        }
+    }
     public IEnumerator TriggerCD()
     {
         available = false;
