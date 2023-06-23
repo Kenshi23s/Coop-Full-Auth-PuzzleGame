@@ -15,8 +15,9 @@ GameObject:
   - component: {fileID: 3763942208230063948}
   - component: {fileID: 6719301870497000817}
   - component: {fileID: 4347445822313135784}
-  m_Layer: 6
-  m_Name: '[Fire]Platforms'
+  - component: {fileID: 8494376326402422265}
+  m_Layer: 7
+  m_Name: '[Water]Platforms'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,13 +30,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 194237600538258817}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.02, y: 2.925, z: -0.01716}
-  m_LocalScale: {x: 1.5119035, y: 0.1460973, z: 1.5499622}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.020000892, y: 2.9250002, z: -0.01715996}
+  m_LocalScale: {x: 1.5119035, y: 0.14609732, z: 1.5499622}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1950904483824444687}
-  m_Father: {fileID: 2576506201367961419}
+  m_Father: {fileID: 329305061321083777}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2923549313821876074
@@ -66,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 196a83e4fac7a644ebc189706f6c2082, type: 2}
+  - {fileID: 2100000, guid: fb659c98d6ac4db41b88596ff2c4e2e1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,8 +100,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.5528681, z: 1}
-  m_Center: {x: 0, y: 0.2764337, z: 0}
+  m_Size: {x: 1, y: 8.809505, z: 1}
+  m_Center: {x: -4.794602e-13, y: -3.351911, z: 0}
 --- !u!114 &3763942208230063948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,6 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2827224485f39d4b83289f8f97a09f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
 --- !u!114 &6719301870497000817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  myElement: 0
+  myElement: 1
 --- !u!114 &4347445822313135784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,12 +146,78 @@ MonoBehaviour:
   DestroyWhenStateAuthorityLeaves: 0
   AllowStateAuthorityOverride: 1
   AoiPositionSource: {fileID: 0}
-  Flags: 0
+  Flags: 3073
   NetworkGuid:
     RawGuidValue: 00000000000000000000000000000000
   NestedObjects: []
-  NetworkedBehaviours: []
+  NetworkedBehaviours:
+  - {fileID: 3763942208230063948}
+  - {fileID: 6719301870497000817}
+  - {fileID: 8494376326402422265}
   SimulationBehaviours: []
+--- !u!114 &8494376326402422265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194237600538258817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  InterpolationSpace: 0
+  InterpolationTarget: {fileID: 1950904483824444687}
+  InterpolateErrorCorrection: 1
+  InterpolatedErrorCorrectionSettings:
+    MinRate: 3.3
+    MaxRate: 10
+    PosBlendStart: 0.25
+    PosBlendEnd: 1
+    PosMinCorrection: 0.025
+    PosTeleportDistance: 2
+    RotBlendStart: 0.1
+    RotBlendEnd: 0.5
+    RotTeleportRadians: 1.5
+  UseLegacySharedModeInterpolation: 0
+  TargetInterpolationDelay: 0.03
+--- !u!1 &1591974528561515796
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 329305061321083777}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &329305061321083777
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591974528561515796}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 777973999121572671}
+  - {fileID: 8283971784233304546}
+  - {fileID: 7402670286412169756}
+  - {fileID: 6340725879372654419}
+  m_Father: {fileID: 2576506201367961419}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2259327632485374057
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,6 +233,7 @@ GameObject:
   - component: {fileID: 373477541926785825}
   - component: {fileID: 7666327698475703842}
   - component: {fileID: 928368302717032555}
+  - component: {fileID: 2162141063132126941}
   m_Layer: 6
   m_Name: '[Fire]Platforms'
   m_TagString: Untagged
@@ -179,13 +248,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2259327632485374057}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.37, y: 0.41, z: 0}
-  m_LocalScale: {x: 1.5119035, y: 0.1460973, z: 1.5499622}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.3699992, y: 0.41000018, z: 0}
+  m_LocalScale: {x: 1.5119035, y: 0.14609732, z: 1.5499622}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6728535931038639675}
-  m_Father: {fileID: 2576506201367961419}
+  m_Father: {fileID: 329305061321083777}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4615014709277498261
@@ -249,8 +318,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.5528681, z: 1}
-  m_Center: {x: 0, y: 0.2764337, z: 0}
+  m_Size: {x: 1, y: 9.56789, z: 1}
+  m_Center: {x: -1.6124081e-12, y: -3.7310987, z: 0}
 --- !u!114 &373477541926785825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,6 +332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2827224485f39d4b83289f8f97a09f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
 --- !u!114 &7666327698475703842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,12 +364,43 @@ MonoBehaviour:
   DestroyWhenStateAuthorityLeaves: 0
   AllowStateAuthorityOverride: 1
   AoiPositionSource: {fileID: 0}
-  Flags: 0
+  Flags: 3073
   NetworkGuid:
     RawGuidValue: 00000000000000000000000000000000
   NestedObjects: []
-  NetworkedBehaviours: []
+  NetworkedBehaviours:
+  - {fileID: 373477541926785825}
+  - {fileID: 7666327698475703842}
+  - {fileID: 2162141063132126941}
   SimulationBehaviours: []
+--- !u!114 &2162141063132126941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2259327632485374057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  InterpolationSpace: 0
+  InterpolationTarget: {fileID: 0}
+  InterpolateErrorCorrection: 1
+  InterpolatedErrorCorrectionSettings:
+    MinRate: 3.3
+    MaxRate: 10
+    PosBlendStart: 0.25
+    PosBlendEnd: 1
+    PosMinCorrection: 0.025
+    PosTeleportDistance: 2
+    RotBlendStart: 0.1
+    RotBlendEnd: 0.5
+    RotTeleportRadians: 1.5
+  UseLegacySharedModeInterpolation: 0
+  TargetInterpolationDelay: 0.03
 --- !u!1 &2576506201367961413
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,7 +410,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2576506201367961419}
-  - component: {fileID: 2576506201367961412}
+  - component: {fileID: 5444903573774831464}
+  - component: {fileID: 2124205191137747450}
+  - component: {fileID: 1367983427}
+  - component: {fileID: 1054177577024755076}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -324,19 +428,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2576506201367961413}
-  m_LocalRotation: {x: 0, y: 0, z: 0.8222, w: 0.5691987}
+  m_LocalRotation: {x: 0, y: 0, z: 0.8221987, w: 0.56920063}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5.6491995, y: 5.6491995, z: 5.6492}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 777973999121572671}
-  - {fileID: 8283971784233304546}
-  - {fileID: 7402670286412169756}
-  - {fileID: 6340725879372654419}
+  - {fileID: 329305061321083777}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2576506201367961412
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 110.611}
+--- !u!114 &5444903573774831464
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -348,6 +449,81 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04ddfc7ee8e547944a8b23cdfeca1691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  speed: 0
+--- !u!114 &2124205191137747450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2576506201367961413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectInterest: 1
+  DefaultInterestGroups: []
+  DestroyWhenStateAuthorityLeaves: 0
+  AllowStateAuthorityOverride: 1
+  AoiPositionSource: {fileID: 0}
+  Flags: 2305
+  NetworkGuid:
+    RawGuidValue: 5c413b4a88a73334ea948ed80eeefd37
+  NestedObjects:
+  - {fileID: 7378943923400722963}
+  - {fileID: 344326164664455090}
+  - {fileID: 928368302717032555}
+  - {fileID: 4347445822313135784}
+  NetworkedBehaviours:
+  - {fileID: 5444903573774831464}
+  - {fileID: 1367983427}
+  SimulationBehaviours: []
+--- !u!114 &1367983427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2576506201367961413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  InterpolationSpace: 0
+  InterpolationTarget: {fileID: 329305061321083777}
+  InterpolateErrorCorrection: 1
+  InterpolatedErrorCorrectionSettings:
+    MinRate: 3.3
+    MaxRate: 10
+    PosBlendStart: 0.25
+    PosBlendEnd: 1
+    PosMinCorrection: 0.025
+    PosTeleportDistance: 2
+    RotBlendStart: 0.1
+    RotBlendEnd: 0.5
+    RotTeleportRadians: 1.5
+  UseLegacySharedModeInterpolation: 0
+  TargetInterpolationDelay: 0.03
+--- !u!114 &1054177577024755076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2576506201367961413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f830817140a1dc4a9166eb966d39e57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canDebug: 1
+  gizmoDraw:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3042808051138001649
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,8 +539,9 @@ GameObject:
   - component: {fileID: 5212542190971013221}
   - component: {fileID: 128068446714552389}
   - component: {fileID: 7378943923400722963}
-  m_Layer: 6
-  m_Name: '[Fire]Platforms'
+  - component: {fileID: 5360832010567911017}
+  m_Layer: 7
+  m_Name: '[Water]Platforms'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -377,13 +554,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3042808051138001649}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.01842, y: -1.9744, z: -0.01716}
-  m_LocalScale: {x: 1.5119035, y: 0.1460973, z: 1.5499622}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.018421045, y: -1.9744003, z: -0.01715996}
+  m_LocalScale: {x: 1.5119035, y: 0.14609732, z: 1.5499622}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5468879342881200156}
-  m_Father: {fileID: 2576506201367961419}
+  m_Father: {fileID: 329305061321083777}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &985752202214304721
@@ -414,7 +591,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 196a83e4fac7a644ebc189706f6c2082, type: 2}
+  - {fileID: 2100000, guid: fb659c98d6ac4db41b88596ff2c4e2e1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -447,8 +624,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.5528681, z: 1}
-  m_Center: {x: 0, y: 0.2764337, z: 0}
+  m_Size: {x: 1, y: 8.942904, z: 1}
+  m_Center: {x: -7.857829e-12, y: -3.4186027, z: 0}
 --- !u!114 &5212542190971013221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -461,6 +638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2827224485f39d4b83289f8f97a09f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
 --- !u!114 &128068446714552389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,7 +652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  myElement: 0
+  myElement: 1
 --- !u!114 &7378943923400722963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -492,12 +670,43 @@ MonoBehaviour:
   DestroyWhenStateAuthorityLeaves: 0
   AllowStateAuthorityOverride: 1
   AoiPositionSource: {fileID: 0}
-  Flags: 0
+  Flags: 3073
   NetworkGuid:
     RawGuidValue: 00000000000000000000000000000000
   NestedObjects: []
-  NetworkedBehaviours: []
+  NetworkedBehaviours:
+  - {fileID: 5212542190971013221}
+  - {fileID: 128068446714552389}
+  - {fileID: 5360832010567911017}
   SimulationBehaviours: []
+--- !u!114 &5360832010567911017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3042808051138001649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  InterpolationSpace: 0
+  InterpolationTarget: {fileID: 5468879342881200156}
+  InterpolateErrorCorrection: 1
+  InterpolatedErrorCorrectionSettings:
+    MinRate: 3.3
+    MaxRate: 10
+    PosBlendStart: 0.25
+    PosBlendEnd: 1
+    PosMinCorrection: 0.025
+    PosTeleportDistance: 2
+    RotBlendStart: 0.1
+    RotBlendEnd: 0.5
+    RotTeleportRadians: 1.5
+  UseLegacySharedModeInterpolation: 0
+  TargetInterpolationDelay: 0.03
 --- !u!1 &7672011932687293745
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,6 +722,7 @@ GameObject:
   - component: {fileID: 7509317938667591511}
   - component: {fileID: 8466845031377775806}
   - component: {fileID: 344326164664455090}
+  - component: {fileID: 2054972223619920071}
   m_Layer: 6
   m_Name: '[Fire]Platforms'
   m_TagString: Untagged
@@ -527,13 +737,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7672011932687293745}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.26, y: 0.41, z: 0}
-  m_LocalScale: {x: 1.5119035, y: 0.1460973, z: 1.5499622}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.2599993, y: 0.41000012, z: 0}
+  m_LocalScale: {x: 1.5119035, y: 0.14609732, z: 1.5499622}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6391455673133935596}
-  m_Father: {fileID: 2576506201367961419}
+  m_Father: {fileID: 329305061321083777}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2411060855426024920
@@ -597,8 +807,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.5528681, z: 1}
-  m_Center: {x: 0, y: 0.2764337, z: 0}
+  m_Size: {x: 1, y: 8.741044, z: 1}
+  m_Center: {x: -2.8533165e-12, y: -3.3176706, z: 0}
 --- !u!114 &7509317938667591511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -611,6 +821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2827224485f39d4b83289f8f97a09f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
 --- !u!114 &8466845031377775806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -642,12 +853,43 @@ MonoBehaviour:
   DestroyWhenStateAuthorityLeaves: 0
   AllowStateAuthorityOverride: 1
   AoiPositionSource: {fileID: 0}
-  Flags: 0
+  Flags: 3073
   NetworkGuid:
     RawGuidValue: 00000000000000000000000000000000
   NestedObjects: []
-  NetworkedBehaviours: []
+  NetworkedBehaviours:
+  - {fileID: 7509317938667591511}
+  - {fileID: 8466845031377775806}
+  - {fileID: 2054972223619920071}
   SimulationBehaviours: []
+--- !u!114 &2054972223619920071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7672011932687293745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  InterpolationSpace: 0
+  InterpolationTarget: {fileID: 0}
+  InterpolateErrorCorrection: 1
+  InterpolatedErrorCorrectionSettings:
+    MinRate: 3.3
+    MaxRate: 10
+    PosBlendStart: 0.25
+    PosBlendEnd: 1
+    PosMinCorrection: 0.025
+    PosTeleportDistance: 2
+    RotBlendStart: 0.1
+    RotBlendEnd: 0.5
+    RotTeleportRadians: 1.5
+  UseLegacySharedModeInterpolation: 0
+  TargetInterpolationDelay: 0.03
 --- !u!1001 &3043976352179334383
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -937,7 +1179,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: FloatingRock
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4983056042747619053, guid: 8000f3647df908a48b82920687a3c87a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8000f3647df908a48b82920687a3c87a, type: 3}
 --- !u!4 &5468879342881200156 stripped
 Transform:
