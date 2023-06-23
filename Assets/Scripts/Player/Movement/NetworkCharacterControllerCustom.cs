@@ -16,6 +16,7 @@ public class NetworkCharacterControllerCustom : NetworkTransform
     public float braking = 10.0f;
     public float maxSpeed = 2.0f;
     public float rotationSpeed = 15.0f;
+    public Vector3 moveVelocity;
 
     [Networked]
     [HideInInspector]
@@ -96,7 +97,7 @@ public class NetworkCharacterControllerCustom : NetworkTransform
     {
         var deltaTime = Runner.DeltaTime;
         var previousPos = transform.position;
-        var moveVelocity = Velocity;
+        moveVelocity = Velocity;
 
         if (direction.sqrMagnitude > 1)
             direction = direction.normalized;
