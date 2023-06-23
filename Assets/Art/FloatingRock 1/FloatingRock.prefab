@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3543595237337467360}
   - component: {fileID: 469142381716506181}
   - component: {fileID: 2406696586649006735}
-  - component: {fileID: 4983056042747619053}
   m_Layer: 0
   m_Name: FloatingRock
   m_TagString: Untagged
@@ -84,16 +83,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4983056042747619053
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4208246320419591002}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2, y: 1.5355599, z: 1.9999999}
-  m_Center: {x: 0, y: 0, z: 0}
