@@ -43,12 +43,13 @@ public class CharacterMovementHandler : NetworkBehaviour
     void RPC_GeneralMovement()
     {
         if (handler.GetInput(out NetworkInputData data))
-        {
-          
+        {          
             Vector3 moveDir = Vector3.right * data.movementInput;
             _characterControllerCustom.Move(moveDir);
             //Move
             //Jump
+
+            _animator.Animator.SetBool("isMoving", moveDir != Vector3.zero);
 
             if (data.isJumpPressed)
             {
@@ -62,10 +63,12 @@ public class CharacterMovementHandler : NetworkBehaviour
             {
                 NearestInteractable();
             }
+
+            return;
         }
-        //Animator
-        //cambiar nombre por el parametro del animator
-        _animator.Animator.SetFloat("isMoving", _moveValue);
+       
+        _animator.Animator.SetBool("isMoving", false);
+
     }
     void NearestInteractable()
     {

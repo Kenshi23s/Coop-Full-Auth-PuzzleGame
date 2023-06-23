@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 8708805349627653964}
   - component: {fileID: 8708805349627653966}
   - component: {fileID: 8708805349627653971}
-  - component: {fileID: 8708805349627653965}
   - component: {fileID: 2276619470071128977}
   - component: {fileID: 8708805349627653962}
   - component: {fileID: 9099805070337761448}
   - component: {fileID: 6619596737940015890}
   - component: {fileID: 840796820508961099}
+  - component: {fileID: 7994965244234255727}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -94,34 +94,6 @@ MonoBehaviour:
   rotationSpeed: 15
   _IsGrounded: 0
   _Velocity: {x: 0, y: 0, z: 0}
---- !u!114 &8708805349627653965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8708805349627653963}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObjectInterest: 1
-  DefaultInterestGroups: []
-  DestroyWhenStateAuthorityLeaves: 0
-  AllowStateAuthorityOverride: 1
-  AoiPositionSource: {fileID: 0}
-  Flags: 2305
-  NetworkGuid:
-    RawGuidValue: c7f9f29fe4150a24285f15228e182638
-  NestedObjects: []
-  NetworkedBehaviours:
-  - {fileID: 8708805349627653971}
-  - {fileID: 2276619470071128977}
-  - {fileID: 8708805349627653962}
-  - {fileID: 9099805070337761448}
-  - {fileID: 6619596737940015890}
-  SimulationBehaviours: []
 --- !u!114 &2276619470071128977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,6 +166,34 @@ MonoBehaviour:
   gizmoDraw:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7994965244234255727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8708805349627653963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectInterest: 1
+  DefaultInterestGroups: []
+  DestroyWhenStateAuthorityLeaves: 0
+  AllowStateAuthorityOverride: 1
+  AoiPositionSource: {fileID: 0}
+  Flags: 2305
+  NetworkGuid:
+    RawGuidValue: c7f9f29fe4150a24285f15228e182638
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 8708805349627653971}
+  - {fileID: 2276619470071128977}
+  - {fileID: 8708805349627653962}
+  - {fileID: 9099805070337761448}
+  - {fileID: 6619596737940015890}
+  SimulationBehaviours: []
 --- !u!1 &8708805351055588393
 GameObject:
   m_ObjectHideFlags: 0

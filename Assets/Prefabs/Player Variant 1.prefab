@@ -13,15 +13,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e7698440c805705468640514d4e8f5f6, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.06
+      value: 0.041859545
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e7698440c805705468640514d4e8f5f6, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.06
+      value: 0.041859545
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e7698440c805705468640514d4e8f5f6, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.06
+      value: 0.041859545
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e7698440c805705468640514d4e8f5f6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -75,13 +75,9 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: bea38a7120c5e8e4ca12b19ae0105035, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5866666021909216657, guid: e7698440c805705468640514d4e8f5f6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e7698440c805705468640514d4e8f5f6, type: 3}
---- !u!95 &4636087677937157454 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: e7698440c805705468640514d4e8f5f6, type: 3}
-  m_PrefabInstance: {fileID: 1241907763458750687}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3333451008399622838
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89,6 +85,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7994965244234255727, guid: c7f9f29fe4150a24285f15228e182638, type: 3}
+      propertyPath: NetworkedBehaviours.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7994965244234255727, guid: c7f9f29fe4150a24285f15228e182638, type: 3}
+      propertyPath: NetworkedBehaviours.Array.data[5]
+      value: 
+      objectReference: {fileID: 1126741140973441693}
+    - target: {fileID: 7994965244234255727, guid: c7f9f29fe4150a24285f15228e182638, type: 3}
+      propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
+      value: 2621026168591076114
+      objectReference: {fileID: 0}
+    - target: {fileID: 7994965244234255727, guid: c7f9f29fe4150a24285f15228e182638, type: 3}
+      propertyPath: NetworkGuid.RawGuidValue.Array.data[1]
+      value: 7963078153109767080
+      objectReference: {fileID: 0}
     - target: {fileID: 8708805349627653963, guid: c7f9f29fe4150a24285f15228e182638, type: 3}
       propertyPath: m_Name
       value: Player Variant 1
@@ -155,11 +167,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8708805349627653966, guid: c7f9f29fe4150a24285f15228e182638, type: 3}
       propertyPath: m_Height
-      value: 4.53
+      value: 2.67
       objectReference: {fileID: 0}
     - target: {fileID: 8708805349627653966, guid: c7f9f29fe4150a24285f15228e182638, type: 3}
       propertyPath: m_Radius
       value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 8708805349627653966, guid: c7f9f29fe4150a24285f15228e182638, type: 3}
+      propertyPath: m_Center.y
+      value: -0.52
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7f9f29fe4150a24285f15228e182638, type: 3}
@@ -228,6 +244,26 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8708805349627653963, guid: c7f9f29fe4150a24285f15228e182638, type: 3}
   m_PrefabInstance: {fileID: 3333451008399622838}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &6129631058254947118
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6240063103652867581}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: e7698440c805705468640514d4e8f5f6, type: 3}
+  m_Controller: {fileID: 9100000, guid: bea38a7120c5e8e4ca12b19ae0105035, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1126741140973441693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,7 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  Animator: {fileID: 4636087677937157454}
+  Animator: {fileID: 6129631058254947118}
   TotalWords: 2
   SyncSettings: 79
   FloatAccuracy:

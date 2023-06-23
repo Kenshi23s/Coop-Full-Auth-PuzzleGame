@@ -7,6 +7,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7994965244234255727, guid: c7f9f29fe4150a24285f15228e182638, type: 3}
+      propertyPath: NetworkedBehaviours.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7994965244234255727, guid: c7f9f29fe4150a24285f15228e182638, type: 3}
+      propertyPath: NetworkedBehaviours.Array.data[5]
+      value: 
+      objectReference: {fileID: 7284116771905262634}
+    - target: {fileID: 7994965244234255727, guid: c7f9f29fe4150a24285f15228e182638, type: 3}
+      propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
+      value: 3818714399051696112
+      objectReference: {fileID: 0}
+    - target: {fileID: 7994965244234255727, guid: c7f9f29fe4150a24285f15228e182638, type: 3}
+      propertyPath: NetworkGuid.RawGuidValue.Array.data[1]
+      value: -2741757988561751320
+      objectReference: {fileID: 0}
     - target: {fileID: 8708805349627653963, guid: c7f9f29fe4150a24285f15228e182638, type: 3}
       propertyPath: m_Name
       value: Player Variant 2
@@ -73,11 +89,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8708805349627653966, guid: c7f9f29fe4150a24285f15228e182638, type: 3}
       propertyPath: m_Height
-      value: 3.8
+      value: 2.59
       objectReference: {fileID: 0}
     - target: {fileID: 8708805349627653966, guid: c7f9f29fe4150a24285f15228e182638, type: 3}
       propertyPath: m_Radius
       value: 0.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 8708805349627653966, guid: c7f9f29fe4150a24285f15228e182638, type: 3}
+      propertyPath: m_Center.y
+      value: -0.25
       objectReference: {fileID: 0}
     - target: {fileID: 8708805349627653971, guid: c7f9f29fe4150a24285f15228e182638, type: 3}
       propertyPath: InterpolateErrorCorrection
@@ -145,6 +165,26 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8708805349627653963, guid: c7f9f29fe4150a24285f15228e182638, type: 3}
   m_PrefabInstance: {fileID: 1753443206018848393}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &6907591397086176080
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6957673422411315650}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: ab819bcfe0ac68148b919f137163e193, type: 3}
+  m_Controller: {fileID: 9100000, guid: e30334e6d54790b47a66c573af11b86e, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &7284116771905262634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  Animator: {fileID: 9050937376086822268}
+  Animator: {fileID: 6907591397086176080}
   TotalWords: 2
   SyncSettings: 79
   FloatAccuracy:
@@ -193,15 +233,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ab819bcfe0ac68148b919f137163e193, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.4770975
+      value: 1.8190329
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ab819bcfe0ac68148b919f137163e193, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.4770975
+      value: 1.8190329
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ab819bcfe0ac68148b919f137163e193, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.4770975
+      value: 1.8190329
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ab819bcfe0ac68148b919f137163e193, type: 3}
       propertyPath: m_LocalPosition.x
@@ -251,10 +291,6 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: e30334e6d54790b47a66c573af11b86e, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5866666021909216657, guid: ab819bcfe0ac68148b919f137163e193, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ab819bcfe0ac68148b919f137163e193, type: 3}
---- !u!95 &9050937376086822268 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: ab819bcfe0ac68148b919f137163e193, type: 3}
-  m_PrefabInstance: {fileID: 3238640357670826221}
-  m_PrefabAsset: {fileID: 0}
