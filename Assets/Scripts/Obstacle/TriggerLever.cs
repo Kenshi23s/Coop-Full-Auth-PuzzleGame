@@ -5,25 +5,20 @@ using UnityEngine.Events;
 using static UnityEditor.Progress;
 
 [RequireComponent(typeof(SphereCollider))]
-public class TriggerLever : MonoBehaviour
+[RequireComponent(typeof(DebugableObject))]
+public class TriggerLever : MonoBehaviour,Iinteractable
 {
     public UnityEvent OnTrigger;
 
     [SerializeField] float cooldown;
     [SerializeField] bool available;
+    DebugableObject _debug;
 
     private void Awake()
     {
         GetComponent<SphereCollider>().isTrigger = true;
-    }
-
-    public void Interact()
-    {
-        if (!available) return;
-        
-        OnTrigger?.Invoke();
-        StartCoroutine(TriggerCD());
-
+        _debug = GetComponent<DebugableObject>();
+        available = true;
     }
 
 
@@ -33,45 +28,19 @@ public class TriggerLever : MonoBehaviour
         yield return new WaitForSeconds(cooldown);
         available = true;
     }
-}
-public class Player:MonoBehaviour
-{
-    bool inputAutority;
-    float interactRadius = 5f;
-    //networked
-    float life;
 
-    private void Update()
+    public void Interact(NetworkPlayer whoInteracted)
     {
-        if (!inputAutority) return;
-
-        if (Input.GetKeyDown(KeyCode.F))       
-            foreach (var item in Physics.OverlapSphere(transform.position,interactRadius))
-                     if (item.TryGetComponent(out TriggerLever x)) x.Interact();
-    }
-
-    //rpc de input a state??
-    public void TakeDamage(float dmg)
-    {
-        life-=dmg;
-        if (life <= 0) Die();
-    }
-    
-    void Die()
-    {
-        //gameover
-    }
-}
-public class ElementPool : MonoBehaviour
-{
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.TryGetComponent(out Player x))
+        if (!available) 
         {
-            x.TakeDamage(Time.deltaTime);
+            _debug.Log("No esta habilitado");
+
+            return;
         }
+        _debug.Log("Interadcuo con la palanca");
+
+        OnTrigger?.Invoke();
+        StartCoroutine(TriggerCD());
     }
-
-
 }
+

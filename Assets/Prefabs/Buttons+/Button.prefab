@@ -194,7 +194,7 @@ PrefabInstance:
     - target: {fileID: -6483264720827800135, guid: 88012949efaa3c5469a3ce0a6c40cb48, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 78088fa5300c40740a9b4e219545ceda, type: 2}
+      objectReference: {fileID: 2100000, guid: 5c0ea1a2d6e7f1c4eb02da7074601a28, type: 2}
     - target: {fileID: 919132149155446097, guid: 88012949efaa3c5469a3ce0a6c40cb48, type: 3}
       propertyPath: m_Name
       value: button
@@ -202,7 +202,7 @@ PrefabInstance:
     - target: {fileID: 7330095381222774183, guid: 88012949efaa3c5469a3ce0a6c40cb48, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 78088fa5300c40740a9b4e219545ceda, type: 2}
+      objectReference: {fileID: 2100000, guid: 5c0ea1a2d6e7f1c4eb02da7074601a28, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88012949efaa3c5469a3ce0a6c40cb48, type: 3}
 --- !u!4 &7150681834418511880 stripped

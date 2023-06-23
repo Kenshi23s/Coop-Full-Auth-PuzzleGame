@@ -14,9 +14,13 @@ public class Teleporter : MonoBehaviour ,Iinteractable
         {
             return;
         }
-        whoInteracted.transform.position = new Vector3(TPTo.transform.position.x, 
+        debug.Log("Teletransporto a" + whoInteracted.name);
+        whoInteracted.ntwk_transform.TeleportToPosition(new Vector3(TPTo.transform.position.x,
                                                        TPTo.transform.position.y,
-                                                       whoInteracted.transform.position.z);
+                                                       whoInteracted.transform.position.z));
+        //whoInteracted.transform.position = new Vector3(TPTo.transform.position.x, 
+        //                                               TPTo.transform.position.y,
+        //                                               whoInteracted.transform.position.z);
     }
 
     private void Awake()
@@ -32,6 +36,7 @@ public class Teleporter : MonoBehaviour ,Iinteractable
         Color color = Color.green;
         Vector3 dir = TPTo.transform.position - transform.position;
         DrawArrow.ForGizmo(transform.position, dir.normalized * 5,color,1,30);
+        Gizmos.DrawWireSphere(TPTo.transform.position, 2f);
     }
 
 }
