@@ -29,7 +29,7 @@ public class NetworkPlayer : NetworkBehaviour
         return GetComponent<CharacterInputHandler>();
     }
 
-
+   public NetworkTransform ntwk_transform { get; private set; }
     private void Awake()
     {
         _handler = GetComponent<CharacterInputHandler>();
@@ -45,7 +45,9 @@ public class NetworkPlayer : NetworkBehaviour
     public override void Spawned()
     {
         SetNickname(PlayerPrefs.GetString("PlayerNickname"));
-       
+        ntwk_transform = GetComponent<NetworkTransform>();
+
+
         if (!HasInputAuthority) return;
         
 
@@ -60,15 +62,7 @@ public class NetworkPlayer : NetworkBehaviour
         update?.Invoke();
     }
 
-    void NearestInteractable()
-    {
-        Collider col = Physics.OverlapSphere(transform.position, interactRadius)
-            .Where(x => x.GetComponent<Iinteractable>() != null)
-            .OrderByDescending(x => Vector3.Distance(x.transform.position, transform.position))
-            .First();
-
-        if (col.TryGetComponent(out Iinteractable y)) y.Interact(this);
-    }
+   
 
     public override void FixedUpdateNetwork()
     {

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
+using System.Linq;
 
 [RequireComponent(typeof(NetworkCharacterControllerCustom))]
 [RequireComponent(typeof(LifeHandler))]
@@ -10,8 +11,9 @@ public class CharacterMovementHandler : NetworkBehaviour
     NetworkCharacterControllerCustom _characterControllerCustom;
     CharacterInputHandler handler;
     NetworkMecanimAnimator _animator;
+    NetworkPlayer _player;
 
-
+   [SerializeField] float interactRadius;
     float _moveValue;
 
     private void Awake()
@@ -25,6 +27,7 @@ public class CharacterMovementHandler : NetworkBehaviour
         var lifeHandler = GetComponent<LifeHandler>();
         handler = GetComponent<CharacterInputHandler>();
         _animator = GetComponent<NetworkMecanimAnimator>();
+        _player = GetComponent<NetworkPlayer>();
 
         //lifeHandler.OnDeadState += SetControllerEnabled;
         //lifeHandler.OnRespawn += Respawn;
@@ -55,12 +58,32 @@ public class CharacterMovementHandler : NetworkBehaviour
             else
                 _animator.Animator.SetBool("isJumping", false);
 
+            if (data.isInteractPressed)
+            {
+                NearestInteractable();
+            }
         }
         //Animator
         //cambiar nombre por el parametro del animator
         _animator.Animator.SetFloat("isMoving", _moveValue);
     }
+    void NearestInteractable()
+    {
+        Collider col = Physics.OverlapSphere(transform.position, interactRadius)
+            .Where(x => x.GetComponent<Iinteractable>() != null)
+            .Minimum(x=>Vector3.Distance(x.transform.position,transform.position));
+            
 
+        if (col != null)
+        {
+            if (col.TryGetComponent(out Iinteractable y)) y.Interact(_player);
+        }
+        else
+        {
+            Debug.Log("no hay interactuable cerca");
+        }
+       
+    }
     //falta asignar
 
     void Respawn()

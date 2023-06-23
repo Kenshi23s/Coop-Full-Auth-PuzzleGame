@@ -20,6 +20,7 @@ public class CharacterInputHandler : NetworkBehaviour
         
         _inputData = new NetworkInputData();
         player = GetComponent<NetworkPlayer>();
+        _debug=GetComponent<DebugableObject>();
     }
     void Start()
     {
@@ -38,23 +39,16 @@ public class CharacterInputHandler : NetworkBehaviour
         }
         if (Input.GetKeyDown(KeyCode.F))
         {
-            NearestInteractable();
+            interactPressed = true;
+          
         }
     }
 
-    void NearestInteractable()
-    {
-        Collider col = Physics.OverlapSphere(transform.position, interactRadius)
-            .Where(x => x.GetComponent<Iinteractable>() != null)
-            .OrderByDescending(x => Vector3.Distance(x.transform.position, transform.position))
-            .First();
-
-        if (col.TryGetComponent(out Iinteractable y)) y.Interact(player);
-    }
+ 
 
     public NetworkInputData GetInputs()
     {
-        Debug.Log("Doy mis Inputs");
+        _debug.Log("Doy mis Inputs");
         _inputData.movementInput = _movementInput;
   
 
