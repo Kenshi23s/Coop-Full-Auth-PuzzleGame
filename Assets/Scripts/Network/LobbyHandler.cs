@@ -6,6 +6,7 @@ using Fusion.Sockets;
 using System;
 using System.Threading.Tasks;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class LobbyHandler : MonoBehaviour, INetworkRunnerCallbacks
 {
@@ -15,9 +16,20 @@ public class LobbyHandler : MonoBehaviour, INetworkRunnerCallbacks
     public event Action OnJoinedLobby;
     public event Action OnFailedJoinLobby;
 
+    public bool testing;
      
     public event Action<List<SessionInfo>> OnSessionListUpdate;
 
+
+    private void Start()
+    {
+        if (testing)
+        {
+            JoinLobby();
+            OnJoinedLobby += () => CreateSession(Random.Range(0, 1000).ToString(), "Level");
+        }
+       
+    }
     #region LOBBY
 
     //Lo agregamos a un boton luego
