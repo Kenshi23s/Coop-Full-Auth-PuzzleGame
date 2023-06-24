@@ -1,3 +1,4 @@
+using Fusion;
 using System.Diagnostics;
 using UnityEngine;
 [RequireComponent(typeof(DebugableObject))]
@@ -8,7 +9,8 @@ public class Teleporter : MonoBehaviour ,Iinteractable
     Teleporter TPTo;
     DebugableObject debug;
 
-    public void Interact(NetworkPlayer whoInteracted)
+    [Rpc(RpcSources.All,RpcTargets.StateAuthority)]
+    public void RPC_Interact(NetworkPlayer whoInteracted)
     {
         if (TPTo == null) 
         {
@@ -42,5 +44,5 @@ public class Teleporter : MonoBehaviour ,Iinteractable
 }
 public interface Iinteractable
 {
-    void Interact(NetworkPlayer whoInteracted);
+    void RPC_Interact(NetworkPlayer whoInteracted);
 }

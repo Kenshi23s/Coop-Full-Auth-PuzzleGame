@@ -6,6 +6,7 @@ using static UnityEditor.Progress;
 
 [RequireComponent(typeof(SphereCollider))]
 [RequireComponent(typeof(DebugableObject))]
+[SelectionBase]
 public class TriggerLever : MonoBehaviour,Iinteractable
 {
     public UnityEvent OnTrigger;
@@ -28,7 +29,7 @@ public class TriggerLever : MonoBehaviour,Iinteractable
         if (button)
         {
             button = false;
-            Interact(default);
+            RPC_Interact(default);
         }
     }
     public IEnumerator TriggerCD()
@@ -38,7 +39,7 @@ public class TriggerLever : MonoBehaviour,Iinteractable
         available = true;
     }
 
-    public void Interact(NetworkPlayer whoInteracted)
+    public void RPC_Interact(NetworkPlayer whoInteracted)
     {
         if (!available) 
         {

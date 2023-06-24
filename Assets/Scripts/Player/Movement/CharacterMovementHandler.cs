@@ -79,7 +79,7 @@ public class CharacterMovementHandler : NetworkBehaviour
 
         if (col != null)
         {
-            if (col.TryGetComponent(out Iinteractable y)) y.Interact(_player);
+            if (col.TryGetComponent(out Iinteractable y)) y.RPC_Interact(_player);
         }
         else
         {
