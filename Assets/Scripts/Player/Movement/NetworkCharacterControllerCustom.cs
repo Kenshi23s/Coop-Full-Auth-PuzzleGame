@@ -123,7 +123,7 @@ public class NetworkCharacterControllerCustom : NetworkTransform
             horizontalVel = Vector3.ClampMagnitude(horizontalVel + direction * acceleration * deltaTime, maxSpeed);
           
 
-            transform.rotation = Quaternion.Euler(Vector3.up * 90 * Mathf.Sign(direction.z));
+            transform.rotation = Quaternion.Euler(Vector3.up * 90 * Mathf.Sign(direction.x));
         }
 
         moveVelocity.x = horizontalVel.x;
