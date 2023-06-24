@@ -7,6 +7,7 @@ using Fusion;
 public class Elevator : NetworkBehaviour
 {
     public event Action NetUpdate = () => { };
+    NetworkTransform Elevatorntwk_Transform;
     Vector3 desiredRotation;
     DebugableObject _debug;
     public float speed;
@@ -29,17 +30,8 @@ public class Elevator : NetworkBehaviour
     private void Awake()
     {
         _debug = GetComponent<DebugableObject>();
-        ntwk_Transform = GetComponent<NetworkTransform>();
+        Elevatorntwk_Transform = GetComponent<NetworkTransform>();
 
-    }
-  
-    NetworkTransform ntwk_Transform;
-    // Update is called once per frame
-    void Update()
-    {
-       
-      
-      
     }
 
     public override void FixedUpdateNetwork()
@@ -60,14 +52,19 @@ public class Elevator : NetworkBehaviour
 
     void RotateTowards()
     {
+        //roto hacia la direccion
         Vector3 actualRotation = new Vector3(0, 0, transform.rotation.eulerAngles.z);
-        Vector3 lerp = Vector3.Lerp(actualRotation, desiredRotation,Runner.DeltaTime);
-        ntwk_Transform.TeleportToRotation(Quaternion.Euler(lerp));
 
-        _debug.Log("Rotando");
-        if (actualRotation.z >= desiredRotation.z-2)
+        Vector3 lerp = Vector3.Lerp(actualRotation, desiredRotation,Runner.DeltaTime*speed);
+
+        Elevatorntwk_Transform.TeleportToRotation(Quaternion.Euler(lerp));
+        
+
+        _debug.Log("Rotando, quedan"+ (desiredRotation.z - actualRotation.z).ToString()+" grados");
+        
+        if (actualRotation.z >= desiredRotation.z)
         {
-            ntwk_Transform.TeleportToRotation(Quaternion.Euler(desiredRotation));
+            Elevatorntwk_Transform.TeleportToRotation(Quaternion.Euler(desiredRotation));
         
             rotating = false;
             NetUpdate -= RotateTowards;
