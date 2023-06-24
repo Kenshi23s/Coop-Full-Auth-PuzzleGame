@@ -18,7 +18,7 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
         if (runner.IsServer)
         {
             
-            var z = runner.Spawn(GetVariant(count), Vector3.zero, null, player);
+            var z = runner.Spawn(GetVariant(count), new Vector3(1,2,0), null, player);
             z.SetElement(count == 0 ? Element.Fire : Element.Water);
             count++;
         }
