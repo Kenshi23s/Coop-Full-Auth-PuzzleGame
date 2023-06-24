@@ -11,6 +11,7 @@ public class GameManager : NetworkObject
 
     public string WinScene;
     public string LoseScene;
+    Dictionary<Element, bool> winObject = new Dictionary<Element, bool>();
 
 
     public static GameManager instance;
@@ -23,7 +24,9 @@ public class GameManager : NetworkObject
     private void Awake()
     {
         instance = this;
-      
+        winObject.Add(Element.Fire, false);
+        winObject.Add(Element.Water, false);
+
 
         runtime = true;
     }
@@ -49,10 +52,19 @@ public class GameManager : NetworkObject
     [Rpc(RpcSources.All,RpcTargets.All)]
     public void RPC_GAMEOVER(bool has_Won)
     {
-        SceneManager.LoadScene(has_Won ? WinScene : LoseScene);
         OnGameEnd?.Invoke();
+        SceneManager.LoadScene(has_Won ? WinScene : LoseScene);
     }
-   
 
+    [Rpc(RpcSources.All,RpcTargets.StateAuthority)]
+    public void SetElement(Element x,bool arg)
+    {
+        winObject[x] = arg;
+
+        foreach (var item in winObject) if (!item.Value) return;
+
+        RPC_GAMEOVER(true);
+    }
+    
     
 }
