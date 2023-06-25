@@ -36,7 +36,7 @@ public class GameManager : NetworkObject
     public void SetCamera(NetworkPlayer player)
     {
 
-        Camera.main.transform.position = player.transform.position + Vector3.back * zOffset;
+        Camera.main.transform.position = player.transform.position + Vector3.back * 50;
         Camera.main.transform.forward = (player.transform.position - Camera.main.transform.position).normalized;
        
     }  

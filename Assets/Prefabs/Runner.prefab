@@ -72,5 +72,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b99e0a7551907ea4c9d888538b5c0360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefabVariant1: {fileID: 6957673422411315651, guid: f047257683ccfe34e8f2afc7a251f3d9, type: 3}
-  _prefabVariant2: {fileID: 6240063103652867580, guid: 12cbdfdd69c15f24a803c8da6389826e, type: 3}
+  _prefabVariant1: {fileID: 6240063103652867580, guid: 12cbdfdd69c15f24a803c8da6389826e, type: 3}
+  _prefabVariant2: {fileID: 6957673422411315651, guid: f047257683ccfe34e8f2afc7a251f3d9, type: 3}

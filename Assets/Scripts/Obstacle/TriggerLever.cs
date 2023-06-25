@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,7 +10,7 @@ using UnityEngine.Events;
 public class TriggerLever : MonoBehaviour,Iinteractable
 {
     public UnityEvent OnTrigger;
-
+    LineRenderer linerenderer;
     [SerializeField] float cooldown;
     [SerializeField] bool available;
     DebugableObject _debug;
@@ -20,9 +21,14 @@ public class TriggerLever : MonoBehaviour,Iinteractable
         GetComponent<SphereCollider>().isTrigger = true;
         _debug = GetComponent<DebugableObject>();
         available = true;
+        linerenderer = GetComponent<LineRenderer>();
     }
 
-
+    private void Start()
+    {
+        linerenderer.SetPosition(0,transform.position);
+        linerenderer.SetPosition(1, OnTrigger.GetPersistentTarget(0).GameObject().transform.position);
+    }
     private void Update()
     {
         if (button)
@@ -49,6 +55,7 @@ public class TriggerLever : MonoBehaviour,Iinteractable
         _debug.Log("Interadcuo con la palanca");
 
         OnTrigger?.Invoke();
+        Destroy(gameObject);
         StartCoroutine(TriggerCD());
     }
 }
