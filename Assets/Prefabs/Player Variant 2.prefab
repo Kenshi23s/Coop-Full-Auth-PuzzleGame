@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4044667049520367752, guid: c7f9f29fe4150a24285f15228e182638, type: 3}
+      propertyPath: m_Size.y
+      value: 0.15732002
+      objectReference: {fileID: 0}
+    - target: {fileID: 4044667049520367752, guid: c7f9f29fe4150a24285f15228e182638, type: 3}
+      propertyPath: m_Center.y
+      value: 0.7114284
+      objectReference: {fileID: 0}
     - target: {fileID: 7994965244234255727, guid: c7f9f29fe4150a24285f15228e182638, type: 3}
       propertyPath: NetworkedBehaviours.Array.size
       value: 6
@@ -97,7 +105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8708805349627653966, guid: c7f9f29fe4150a24285f15228e182638, type: 3}
       propertyPath: m_Center.y
-      value: -0.25
+      value: 1.26
       objectReference: {fileID: 0}
     - target: {fileID: 8708805349627653971, guid: c7f9f29fe4150a24285f15228e182638, type: 3}
       propertyPath: InterpolationTarget
@@ -253,7 +261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ab819bcfe0ac68148b919f137163e193, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.54
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ab819bcfe0ac68148b919f137163e193, type: 3}
       propertyPath: m_LocalPosition.z
