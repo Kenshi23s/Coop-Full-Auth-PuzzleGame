@@ -2,9 +2,11 @@ using Fusion;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEditor.Progress;
 
 public class GameManager : NetworkObject
 {
@@ -54,10 +56,20 @@ public class GameManager : NetworkObject
     [Rpc(RpcSources.StateAuthority,RpcTargets.All)]
     public void RPC_GAMEOVER(bool has_Won)
     {
+        
         Debug.Log(has_Won ? "Victoria" : "Derrota");
-        Runner.Shutdown();
         OnGameEnd?.Invoke();
+        if (HasStateAuthority)
+        {
+            foreach (var item in Runner.ActivePlayers.Where(x => x != Runner.LocalPlayer))
+            {
+                Runner.Disconnect(item);
+
+            }
+        }
+
         SceneManager.LoadScene(has_Won ? WinScene : LoseScene);
+
     }
 
     [Rpc(RpcSources.All,RpcTargets.StateAuthority)]
