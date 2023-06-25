@@ -55,6 +55,7 @@ public class GameManager : NetworkObject
     public void RPC_GAMEOVER(bool has_Won)
     {
         Debug.Log(has_Won ? "Victoria" : "Derrota");
+        Runner.Shutdown();
         OnGameEnd?.Invoke();
         SceneManager.LoadScene(has_Won ? WinScene : LoseScene);
     }
