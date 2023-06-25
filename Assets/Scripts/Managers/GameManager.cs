@@ -51,7 +51,7 @@ public class GameManager : NetworkObject
     {
         
     }
-    [Rpc(RpcSources.All,RpcTargets.All)]
+    [Rpc(RpcSources.StateAuthority,RpcTargets.All)]
     public void RPC_GAMEOVER(bool has_Won)
     {
         Debug.Log(has_Won ? "Victoria" : "Derrota");
