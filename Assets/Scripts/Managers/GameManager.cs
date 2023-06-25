@@ -75,6 +75,7 @@ public class GameManager : NetworkObject
     [Rpc(RpcSources.StateAuthority, RpcTargets.Proxies)]
     void RPC_SENDTOMENU(string scene)
     {
+        Runner.Disconnect(Runner.LocalPlayer);
         SceneManager.LoadScene(scene);
        
     }
