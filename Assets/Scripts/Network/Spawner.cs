@@ -23,7 +23,7 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
             var z = runner.Spawn(GetVariant(count), new Vector3(1,2,0), null, player);
             z.SetElement(count == 0 ? Element.Fire : Element.Water);
             count++;
-            if (count>=1)
+            if (count > 1)
             {
                 count = 0;
                 GameStart();
