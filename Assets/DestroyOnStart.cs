@@ -4,7 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DestroyOnStart : NetworkBehaviour
-{
-  
-    private void Awake() => Spawner.GameStart += () => Runner.Despawn(Object);
+{  
+    
+
+    public override void Spawned()
+    {
+        Spawner.GameStart += () => Runner.Despawn(Object);
+    }
 }
