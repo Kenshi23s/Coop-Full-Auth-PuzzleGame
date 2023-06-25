@@ -5,11 +5,11 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 6240063103652867578}
+    m_TransformParent: {fileID: 6240063102229135006}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e7698440c805705468640514d4e8f5f6, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e7698440c805705468640514d4e8f5f6, type: 3}
       propertyPath: m_LocalScale.x
@@ -41,15 +41,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e7698440c805705468640514d4e8f5f6, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e7698440c805705468640514d4e8f5f6, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e7698440c805705468640514d4e8f5f6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e7698440c805705468640514d4e8f5f6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -179,6 +179,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7f9f29fe4150a24285f15228e182638, type: 3}
+--- !u!4 &6240063102229135006 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8708805351055588392, guid: c7f9f29fe4150a24285f15228e182638, type: 3}
+  m_PrefabInstance: {fileID: 3333451008399622838}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6240063102229135007 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8708805351055588393, guid: c7f9f29fe4150a24285f15228e182638, type: 3}
@@ -234,11 +239,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!4 &6240063103652867578 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8708805349627653964, guid: c7f9f29fe4150a24285f15228e182638, type: 3}
-  m_PrefabInstance: {fileID: 3333451008399622838}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6240063103652867581 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8708805349627653963, guid: c7f9f29fe4150a24285f15228e182638, type: 3}
