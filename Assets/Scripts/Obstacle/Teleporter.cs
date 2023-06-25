@@ -8,6 +8,7 @@ public class Teleporter : MonoBehaviour ,Iinteractable
     [SerializeField]
     Teleporter TPTo;
     DebugableObject debug;
+    LineRenderer render;
 
     [Rpc(RpcSources.All,RpcTargets.StateAuthority)]
     public void RPC_Interact(NetworkPlayer whoInteracted)
@@ -29,6 +30,16 @@ public class Teleporter : MonoBehaviour ,Iinteractable
     {
         debug = GetComponent<DebugableObject>();
         debug.AddGizmoAction(DrawLineToTp);
+        render =GetComponent<LineRenderer>();
+
+        Vector3 offsetZ = new Vector3(0, 0, -5);
+        render.SetPosition(0,transform.position - offsetZ);
+        render.SetPosition(1, TPTo.transform.position - offsetZ);
+    }
+
+    private void Update()
+    {
+        
     }
 
 

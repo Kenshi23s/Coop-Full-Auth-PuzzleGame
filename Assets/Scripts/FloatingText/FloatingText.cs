@@ -74,6 +74,7 @@ public class FloatingText : MonoBehaviour
         _textParameters = parametersPass;
         SetText(TextValueDamage, parametersPass.sortingOrderRead);
         SetRandomForce(parametersPass.x_Spread);
+        Destroy(gameObject,6f);
 
     }
 
@@ -137,7 +138,7 @@ public class FloatingText : MonoBehaviour
         _actualColor.a = Mathf.Max(_actualColor.a - decreaseSpeed * Time.deltaTime, 0);
         _popUpText.color = _actualColor;
 
-        if (_actualColor.a <= 0) GoToPool();
+        if (_actualColor.a <= 0) Destroy(gameObject);
     }
     #endregion
    

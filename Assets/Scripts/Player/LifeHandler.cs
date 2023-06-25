@@ -36,6 +36,8 @@ public class LifeHandler : NetworkBehaviour
     [Rpc(RpcSources.All,RpcTargets.StateAuthority)]
     public void RPC_TakeDamage(byte dmg)
     {
+        FloatingTextManager.instance.PopUpText(dmg.ToString(), transform.position);
+
         if (!HasStateAuthority) return;
     
         if (_isDead) return;
@@ -45,7 +47,7 @@ public class LifeHandler : NetworkBehaviour
 
         _debug.Log($"recibi {dmg}, mi vida actual es{_currentLife}");
         _currentLife -= dmg;
-        FloatingTextManager.instance.PopUpText(dmg.ToString(), transform.position);
+      
 
 
 

@@ -2,6 +2,7 @@ using Fusion;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,8 +10,9 @@ public class GameManager : NetworkObject
 {
     public static bool runtime = false;
 
-    public string WinScene;
-    public string LoseScene;
+    [SerializeField]public const string WinScene = "Victory";
+    [SerializeField]public const string LoseScene = "Loss";
+
     Dictionary<Element, bool> winObject = new Dictionary<Element, bool>();
 
 
@@ -52,6 +54,7 @@ public class GameManager : NetworkObject
     [Rpc(RpcSources.All,RpcTargets.All)]
     public void RPC_GAMEOVER(bool has_Won)
     {
+        Debug.Log(has_Won ? "Victoria" : "Derrota");
         OnGameEnd?.Invoke();
         SceneManager.LoadScene(has_Won ? WinScene : LoseScene);
     }
@@ -61,8 +64,10 @@ public class GameManager : NetworkObject
     {
         winObject[x] = arg;
 
-        foreach (var item in winObject) if (!item.Value) return;
+        foreach (var item in winObject) if (!item.Value) { Debug.Log("condiciones NO aprobadas"); return; } 
 
+
+        Debug.Log("condiciones aprobadas, pasando a game over de victoria");
         RPC_GAMEOVER(true);
     }
     
