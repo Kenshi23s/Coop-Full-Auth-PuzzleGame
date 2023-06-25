@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static UnityEditor.Progress;
@@ -59,17 +60,23 @@ public class GameManager : NetworkObject
         
         Debug.Log(has_Won ? "Victoria" : "Derrota");
         OnGameEnd?.Invoke();
+    
         if (HasStateAuthority)
         {
-            foreach (var item in Runner.ActivePlayers.Where(x => x != Runner.LocalPlayer))
-            {
-                Runner.Disconnect(item);
-
-            }
+            string scene = has_Won ? WinScene : LoseScene;
+            RPC_SENDTOMENU(scene);
+            Runner.Shutdown();
+            SceneManager.LoadScene(scene);
         }
+       
 
-        SceneManager.LoadScene(has_Won ? WinScene : LoseScene);
 
+    }
+    [Rpc(RpcSources.StateAuthority, RpcTargets.Proxies)]
+    void RPC_SENDTOMENU(string scene)
+    {
+        SceneManager.LoadScene(scene);
+       
     }
 
     [Rpc(RpcSources.All,RpcTargets.StateAuthority)]
