@@ -11,7 +11,9 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
     [SerializeField] NetworkPlayer _prefabVariant2;
     CharacterInputHandler _characterInputHandler;
 
-    int count=0;
+    int count = 0;
+
+    public static event Action GameStart = delegate{ };
     //Callback que se recibe cuando entra un nuevo Cliente a la sala
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
@@ -21,6 +23,12 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
             var z = runner.Spawn(GetVariant(count), new Vector3(1,2,0), null, player);
             z.SetElement(count == 0 ? Element.Fire : Element.Water);
             count++;
+            if (count>=1)
+            {
+                count = 0;
+                GameStart();
+                GameStart = delegate { };
+            }
         }
         else
         {

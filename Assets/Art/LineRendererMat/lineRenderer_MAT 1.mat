@@ -57,5 +57,5 @@ Material:
     - _ScaleTex: 2
     - _Speed: 3
     m_Colors:
-    - _Color: {r: 1, g: 0, b: 0.81733656, a: 0}
+    - _Color: {r: 0.18086433, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
