@@ -76,10 +76,10 @@ public class Obstacle : NetworkBehaviour
     NetworkPlayer aux;
     IEnumerator DamageCoroutine()
     {
-        WaitForSeconds wait = new WaitForSeconds(0.3f);
+        WaitForSeconds wait = new WaitForSeconds(4);
         while (aux!=null)
         {
-            aux.lifeHandler.RPC_TakeDamage(1);
+            aux.lifeHandler.RPC_TakeDamage(20);
             yield return wait;
         }
      

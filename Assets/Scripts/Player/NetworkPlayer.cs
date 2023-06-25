@@ -40,7 +40,7 @@ public class NetworkPlayer : NetworkBehaviour
     {
         Tuple<LayerMask,Material> data  = LayerManager.instance.GetElementData(x);
         gameObject.layer = data.Item1.LayerMaskToLayerNumber();
-        view.GetComponent<Renderer>().material = data.Item2;
+     
     }
     public override void Spawned()
     {
@@ -97,7 +97,7 @@ public class NetworkPlayer : NetworkBehaviour
             newColor = Color.red;
 
 
-        GetComponentInChildren<SkinnedMeshRenderer>().material.color = newColor;
+        //GetComponentInChildren<SkinnedMeshRenderer>().material.color = newColor;
     }
 
 

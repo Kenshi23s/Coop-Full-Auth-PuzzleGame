@@ -35,8 +35,8 @@ public class GameManager : NetworkObject
 
     public void SetCamera(NetworkPlayer player)
     {
-
-        Camera.main.transform.position = player.transform.position + Vector3.back * 50;
+        //lo hardcodeo pq al hacerlo network object ya no pude editar las variables desde editor C:
+        Camera.main.transform.position = player.transform.position + Vector3.back * 100;
         Camera.main.transform.forward = (player.transform.position - Camera.main.transform.position).normalized;
        
     }  
