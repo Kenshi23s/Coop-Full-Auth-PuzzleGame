@@ -28,14 +28,22 @@ public class Obstacle : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetElement();
+       
     }
 
-    void SetElement()
+    public override void Spawned()
+    {
+        RPC_SetElement();
+    }
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    void RPC_SetElement()
     {
         Tuple<LayerMask, Material> x = LayerManager.instance.GetElementData(myElement);
-        gameObject.layer = x.Item1.LayerMaskToLayerNumber();
-
+        if (HasStateAuthority)
+        {
+            gameObject.layer = x.Item1.LayerMaskToLayerNumber();
+        }
+     
         Renderer ren  = view!=null ? view.GetComponent<Renderer>() : GetComponent<Renderer>();
        
         ren.material = x.Item2;
@@ -45,7 +53,7 @@ public class Obstacle : NetworkBehaviour
     // Update is called once per frame
     public void DestroyObstacle()
     {
-        Runner.Despawn(this.Object);
+        Runner.Despawn(Object);
     }
 
     private void OnValidate()
@@ -105,7 +113,7 @@ public class Obstacle : NetworkBehaviour
     {
         // si soy de fuego me convierto en agua, si soy de agua paso a ser de fuego
         myElement = myElement == Element.Fire ? Element.Water : Element.Fire;
-        SetElement();
+        RPC_SetElement();
     }
 
     private void OnTriggerExit(Collider other)
