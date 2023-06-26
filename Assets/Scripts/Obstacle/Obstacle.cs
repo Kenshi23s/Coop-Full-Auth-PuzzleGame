@@ -87,6 +87,8 @@ public class Obstacle : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!HasStateAuthority) return;
+
         if (other.TryGetComponent(out NetworkPlayer player))
         {
             PlayerEnter?.Invoke(player);
@@ -101,6 +103,8 @@ public class Obstacle : NetworkBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (!HasStateAuthority) return;
+
         if (other.TryGetComponent(out NetworkPlayer player))
         {
             PlayerLeave?.Invoke(player);

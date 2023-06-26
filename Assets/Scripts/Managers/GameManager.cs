@@ -43,17 +43,7 @@ public class GameManager : NetworkObject
         Camera.main.transform.forward = (player.transform.position - Camera.main.transform.position).normalized;
        
     }  
-    
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     [Rpc(RpcSources.StateAuthority,RpcTargets.All)]
     public void RPC_GAMEOVER(bool has_Won)
     {
@@ -75,9 +65,9 @@ public class GameManager : NetworkObject
     [Rpc(RpcSources.StateAuthority, RpcTargets.Proxies)]
     void RPC_SENDTOMENU(string scene)
     {
-        Runner.Disconnect(Runner.LocalPlayer);
-        SceneManager.LoadScene(scene);
-       
+        Runner.SetActiveScene(scene);
+        Runner.Shutdown();
+         
     }
 
     [Rpc(RpcSources.All,RpcTargets.StateAuthority)]
@@ -85,10 +75,9 @@ public class GameManager : NetworkObject
     {
         winObject[x] = arg;
 
-        foreach (var item in winObject) if (!item.Value) { Debug.Log("condiciones NO aprobadas"); return; } 
+        foreach (var item in winObject) if (!item.Value) { Debug.Log("Condiciones NO aprobadas"); return; } 
 
-
-        Debug.Log("condiciones aprobadas, pasando a game over de victoria");
+        Debug.Log("Condiciones aprobadas, pasando a game over de victoria");
         RPC_GAMEOVER(true);
     }
     

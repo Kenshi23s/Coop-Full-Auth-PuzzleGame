@@ -24,19 +24,19 @@ public class LobbyHandler : MonoBehaviour, INetworkRunnerCallbacks
     private void Awake()
     {
      #if !UNITY_EDITOR
-      testing =false;
+      testing = false;
       #endif
     }
     private void Start()
     {
-        if (testing)
-        {
-            JoinLobby();
-            OnJoinedLobby += () => CreateSession(Random.Range(0, 1000).ToString(), "Level");
-        }
-       
+        if (!testing) return;
+        
+         JoinLobby();
+         OnJoinedLobby += () => CreateSession(Random.Range(0, 1000).ToString(), "Level");
+             
     }
-#region LOBBY
+
+    #region LOBBY
 
     //Lo agregamos a un boton luego
     public void JoinLobby()
@@ -72,8 +72,7 @@ public class LobbyHandler : MonoBehaviour, INetworkRunnerCallbacks
 
 #endregion
    
-
-#region CREATE/JOIN SESSION
+    #region CREATE/JOIN SESSION
 
     //Lo agregamos a un boton luego
     public void CreateSession(string sessionName, string sceneName)
@@ -117,7 +116,7 @@ public class LobbyHandler : MonoBehaviour, INetworkRunnerCallbacks
         OnSessionListUpdate?.Invoke(sessionList);       
     }
 
-#region Unused Callbacks
+   #region Unused Callbacks
     public void OnConnectedToServer(NetworkRunner runner) { }
 
     public void OnConnectFailed(NetworkRunner runner, NetAddress remoteAddress, NetConnectFailedReason reason) { }
