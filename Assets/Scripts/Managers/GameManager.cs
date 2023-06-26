@@ -55,8 +55,9 @@ public class GameManager : NetworkObject
         {
             string scene = has_Won ? WinScene : LoseScene;
             RPC_SENDTOMENU(scene);
+            Runner.SetActiveScene(scene);
             Runner.Shutdown();
-            SceneManager.LoadScene(scene);
+           
         }
        
 
