@@ -1,15 +1,10 @@
 using Fusion;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static UnityEditor.Progress;
 
-public class GameManager : NetworkObject
+public class GameManager : NetworkBehaviour
 {
     public static bool runtime = false;
 
@@ -75,7 +70,7 @@ public class GameManager : NetworkObject
     }
 
     [Rpc(RpcSources.All,RpcTargets.StateAuthority)]
-    public void SetElement(Element x,bool arg)
+    public void RPC_SetElement(Element x,bool arg)
     {
         winObject[x] = arg;
 

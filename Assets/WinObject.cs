@@ -32,7 +32,7 @@ public class WinObject : NetworkBehaviour
         if (other.TryGetComponent(out NetworkPlayer player))
         {
             Debug.Log($"Seteo el elemento{myElement} a {player.gameObject.layer == gameObject.layer} por layer");
-            GameManager.instance.SetElement(myElement, player.gameObject.layer == gameObject.layer);
+            GameManager.instance.RPC_SetElement(myElement, player.gameObject.layer == gameObject.layer);
         }
            
     }
@@ -44,7 +44,7 @@ public class WinObject : NetworkBehaviour
         if (other.TryGetComponent(out NetworkPlayer player))
         {
             Debug.Log($"Seteo el elemento{myElement} a {false} ya que el player q estaba se salio");
-            GameManager.instance.SetElement(myElement, false);
+            GameManager.instance.RPC_SetElement(myElement, false);
         }
            
     }
