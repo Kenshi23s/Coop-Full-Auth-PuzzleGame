@@ -50,11 +50,11 @@ public class Obstacle : NetworkBehaviour
       
     
     }
-    // Update is called once per frame
-    public void DestroyObstacle()
-    {
-        Runner.Despawn(Object);
-    }
+  
+    public void DestroyObstacle() => Runner.Despawn(Object);
+
+
+
 
     private void OnValidate()
     {
