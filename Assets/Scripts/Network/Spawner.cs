@@ -89,7 +89,7 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
 
     public void OnSceneLoadStart(NetworkRunner runner) { }
 
-    public void OnShutdown(NetworkRunner runner, ShutdownReason shutdownReason) { runner.SetActiveScene("Loss"); }
+    public void OnShutdown(NetworkRunner runner, ShutdownReason shutdownReason) {  }
 
     public void OnUserSimulationMessage(NetworkRunner runner, SimulationMessagePtr message) { }
 
