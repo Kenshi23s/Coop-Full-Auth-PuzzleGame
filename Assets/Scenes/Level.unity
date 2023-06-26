@@ -685,7 +685,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh80094
+  m_Name: pb_Mesh31776
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -890,7 +890,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh80354
+  m_Name: pb_Mesh32032
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5079,7 +5079,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh80374
+  m_Name: pb_Mesh32052
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6818,7 +6818,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh80272
+  m_Name: pb_Mesh31950
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7589,7 +7589,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh79828
+  m_Name: pb_Mesh31510
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11088,7 +11088,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh79924
+  m_Name: pb_Mesh31606
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11277,17 +11277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afd9b7406e8aa2d45bcd94cef4088e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectInterest: 1
-  DefaultInterestGroups: []
-  DestroyWhenStateAuthorityLeaves: 0
-  AllowStateAuthorityOverride: 1
-  AoiPositionSource: {fileID: 0}
-  Flags: 2561
-  NetworkGuid:
-    RawGuidValue: 72411ef2cfa94c2481b2e15c69f4ba7a
-  NestedObjects: []
-  NetworkedBehaviours: []
-  SimulationBehaviours: []
+  _interpolationDataSource: 0
   zOffset: 60
 --- !u!4 &1620664853
 Transform:
@@ -11326,7 +11316,8 @@ MonoBehaviour:
   NetworkGuid:
     RawGuidValue: 26ed52cb61e7455bb868bf87f2670fd4
   NestedObjects: []
-  NetworkedBehaviours: []
+  NetworkedBehaviours:
+  - {fileID: 1620664852}
   SimulationBehaviours: []
 --- !u!114 &1620664857
 MonoBehaviour:
@@ -12991,7 +12982,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1770216266}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.1, y: 32.6, z: -1.73}
+  m_LocalPosition: {x: 11.1, y: 30.8, z: -0.73}
   m_LocalScale: {x: 1, y: 66.606285, z: 12.612733}
   m_ConstrainProportionsScale: 0
   m_Children: []
