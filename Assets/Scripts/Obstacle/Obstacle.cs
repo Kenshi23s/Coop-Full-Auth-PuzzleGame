@@ -35,20 +35,27 @@ public class Obstacle : NetworkBehaviour
     {
         RPC_SetElement();
     }
-    [Rpc(RpcSources.All, RpcTargets.All)]
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     void RPC_SetElement()
     {
         Tuple<LayerMask, Material> x = LayerManager.instance.GetElementData(myElement);
         if (HasStateAuthority)
         {
             gameObject.layer = x.Item1.LayerMaskToLayerNumber();
-        }
-     
-        Renderer ren  = view!=null ? view.GetComponent<Renderer>() : GetComponent<Renderer>();
-       
-        ren.material = x.Item2;
+            Renderer ren = view != null ? view.GetComponent<Renderer>() : GetComponent<Renderer>();
+            ren.sharedMaterial = x.Item2;
+            RPC_SetMaterial(myElement);
+        }     
+    }
+
+    [Rpc(RpcSources.StateAuthority, RpcTargets.Proxies)]
+    void RPC_SetMaterial(Element newElement)
+    {
+        Material x = LayerManager.instance.GetElementData(newElement).Item2;
+        Renderer ren = view != null ? view.GetComponent<Renderer>() : GetComponent<Renderer>();
+        ren.sharedMaterial = x;
       
-    
     }
   
     public void DestroyObstacle() => Runner.Despawn(Object);
