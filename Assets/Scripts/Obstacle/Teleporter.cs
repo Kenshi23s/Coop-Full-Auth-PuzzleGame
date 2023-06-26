@@ -13,10 +13,10 @@ public class Teleporter : MonoBehaviour ,Iinteractable
     [Rpc(RpcSources.All,RpcTargets.StateAuthority)]
     public void RPC_Interact(NetworkPlayer whoInteracted)
     {
-        if (TPTo == null) 
-        {
-            return;
-        }
+        if (TPTo == null) return;
+
+
+
         debug.Log("Teletransporto a" + whoInteracted.name);
         whoInteracted.ntwk_transform.TeleportToPosition(new Vector3(TPTo.transform.position.x,
                                                        TPTo.transform.position.y,
@@ -32,6 +32,8 @@ public class Teleporter : MonoBehaviour ,Iinteractable
         debug.AddGizmoAction(DrawLineToTp);
         render =GetComponent<LineRenderer>();
 
+        if (TPTo == null) return;
+        
         Vector3 offsetZ = new Vector3(0, 0, -5);
         render.SetPosition(0,transform.position - offsetZ);
         render.SetPosition(1, TPTo.transform.position - offsetZ);
