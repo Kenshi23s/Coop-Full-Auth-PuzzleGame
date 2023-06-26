@@ -63,9 +63,10 @@ public class GameManager : NetworkBehaviour
     void RPC_SENDTOMENU(string scene)
     {
         if (HasStateAuthority) return;
-       
-        Runner.SetActiveScene(scene);
-        Runner.Shutdown();
+
+        Debug.Log("Soy Proxie, vuelvo a la escena");
+        SceneManager.LoadScene(scene);
+            Runner.Shutdown();
          
     }
 
