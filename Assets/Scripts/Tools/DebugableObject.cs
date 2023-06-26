@@ -2,9 +2,12 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-[DisallowMultipleComponent]
+[DisallowMultipleComponent]//me ayuda a que la consola no sea un caos y pueda tener mis debugs ya implementados
+                           //cuando nesecito debugear solo activo la booleana de canDebug
+                           //la parte mala es que se compila en el juego :C
 public class DebugableObject : MonoBehaviour
 {
+
     [SerializeField]public bool canDebug = true;
     public UnityEvent gizmoDraw;
 

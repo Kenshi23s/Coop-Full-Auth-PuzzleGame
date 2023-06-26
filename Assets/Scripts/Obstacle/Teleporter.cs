@@ -7,30 +7,24 @@ public class Teleporter : MonoBehaviour ,Iinteractable
 
     [SerializeField]
     Teleporter TPTo;
-    DebugableObject debug;
+    DebugableObject _debug;
     LineRenderer render;
 
     [Rpc(RpcSources.All,RpcTargets.StateAuthority)]
     public void RPC_Interact(NetworkPlayer whoInteracted)
     {
         if (TPTo == null) return;
-
-
-
-        debug.Log("Teletransporto a" + whoInteracted.name);
+        _debug.Log("Teletransporto a" + whoInteracted.name);
         whoInteracted.ntwk_transform.TeleportToPosition(new Vector3(TPTo.transform.position.x,
                                                        TPTo.transform.position.y,
                                                        whoInteracted.transform.position.z));
-        //whoInteracted.transform.position = new Vector3(TPTo.transform.position.x, 
-        //                                               TPTo.transform.position.y,
-        //                                               whoInteracted.transform.position.z);
     }
 
     private void Awake()
     {
-        debug = GetComponent<DebugableObject>();
-        debug.AddGizmoAction(DrawLineToTp);
-        render =GetComponent<LineRenderer>();
+        _debug = GetComponent<DebugableObject>();
+        _debug.AddGizmoAction(DrawLineToTp);
+        render = GetComponent<LineRenderer>();
 
         if (TPTo == null) return;
         
@@ -39,12 +33,7 @@ public class Teleporter : MonoBehaviour ,Iinteractable
         render.SetPosition(1, TPTo.transform.position - offsetZ);
     }
 
-    private void Update()
-    {
-        
-    }
-
-
+    //debug Gizmo
     void DrawLineToTp()
     {
         if (TPTo == null) return;
@@ -53,7 +42,6 @@ public class Teleporter : MonoBehaviour ,Iinteractable
         DrawArrow.ForGizmo(transform.position, dir.normalized * 5,color,1,30);
         Gizmos.DrawWireSphere(TPTo.transform.position, 2f);
     }
-
 }
 public interface Iinteractable
 {

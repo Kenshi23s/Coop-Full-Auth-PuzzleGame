@@ -15,14 +15,14 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
     int count = 0;
 
     public static event Action GameStart = delegate{ };
-    //Callback que se recibe cuando entra un nuevo Cliente a la sala
+    //Callback que se recibe cuando entra un nuevo Cliente a la salaW
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
         if (runner.IsServer)
         {
             
-            var z = runner.Spawn(GetVariant(count), new Vector3(1,2,0), null, player);
-            z.SetElement(count == 0 ? Element.Fire : Element.Water);
+            var x = runner.Spawn(GetVariant(count), new Vector3(1,2,0), null, player);
+            x.SetElement(count == 0 ? Element.Fire : Element.Water);
             count++;
             if (runner.ActivePlayers.Count() > 1)
             {
