@@ -64,7 +64,7 @@ public class GameManager : NetworkObject
 
 
     }
-    [Rpc(RpcSources.StateAuthority, RpcTargets.Proxies)]
+    [Rpc(RpcSources.All, RpcTargets.Proxies)]
     void RPC_SENDTOMENU(string scene)
     {
         if (HasStateAuthority) return;
