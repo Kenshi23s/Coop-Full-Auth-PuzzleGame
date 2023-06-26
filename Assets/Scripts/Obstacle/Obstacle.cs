@@ -101,6 +101,13 @@ public class Obstacle : NetworkBehaviour
         }
     }
 
+    public void ChangeElement()
+    {
+        // si soy de fuego me convierto en agua, si soy de agua paso a ser de fuego
+        myElement = myElement == Element.Fire ? Element.Water : Element.Fire;
+        SetElement();
+    }
+
     private void OnTriggerExit(Collider other)
     {
         if (!HasStateAuthority) return;

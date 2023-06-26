@@ -58,5 +58,22 @@ public class TriggerLever : MonoBehaviour,Iinteractable
         Destroy(gameObject);
         StartCoroutine(TriggerCD());
     }
+
+    private void OnDrawGizmos()
+    {
+        if (OnTrigger.GetPersistentTarget(0)!=null) 
+        {
+            for (int i = 0; i < OnTrigger.GetPersistentEventCount(); i++)
+            {
+                if (OnTrigger.GetPersistentTarget(i).GameObject()==null)                
+                    continue;
+                
+                Gizmos.color = Color.green;
+                Gizmos.DrawLine(transform.position, OnTrigger.GetPersistentTarget(i).GameObject().transform.position);
+            }
+           
+        }
+        
+    }
 }
 
