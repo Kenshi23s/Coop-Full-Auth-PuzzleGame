@@ -21,15 +21,6 @@ public class Obstacle : NetworkBehaviour
     public Action<NetworkPlayer> PlayerEnter;
     public Action<NetworkPlayer> PlayerLeave;
 
-    private void Awake()
-    {
-        
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-    }
 
     public override void Spawned()
     {

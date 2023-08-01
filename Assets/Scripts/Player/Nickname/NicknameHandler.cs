@@ -10,9 +10,15 @@ public class NicknameHandler : MonoBehaviour
 
     List<NicknameText> _allNicknames;
 
+    private void Awake()
+    {
+        instance = this;
+        _allNicknames = new List<NicknameText>();
+    }
+
     public NicknameText AddNickname( NetworkPlayer owner)
     {
-        return default;
+        
         var newNickname = Instantiate(_nicknamePrefab, transform).SetOwner(owner);
 
         _allNicknames.Add(newNickname);
@@ -29,7 +35,7 @@ public class NicknameHandler : MonoBehaviour
 
     private void LateUpdate()
     {
-        return;
+      
         foreach (var nickname in _allNicknames)
         {
             nickname.UpdatePosition();

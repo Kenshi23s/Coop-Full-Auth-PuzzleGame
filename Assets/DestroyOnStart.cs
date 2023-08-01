@@ -9,6 +9,6 @@ public class DestroyOnStart : NetworkBehaviour
 
     public override void Spawned()
     {
-        Spawner.GameStart += () => Runner.Despawn(Object);
+        Spawner.OnGameStart += () => Runner.Despawn(Object);
     }
 }

@@ -3,6 +3,7 @@ using Fusion.Sockets;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class GameManager : NetworkBehaviour
@@ -14,26 +15,35 @@ public class GameManager : NetworkBehaviour
 
     Dictionary<Element, bool> winObject = new Dictionary<Element, bool>();
 
+    public UnityEvent OnGameModeStart;
 
     public static GameManager instance;
     public event Action OnGameEnd;
 
     public float zOffset;
 
+    [field : SerializeField] public Transform LobbyPos { get; private set; }
+    [field : SerializeField] public Transform LevelStartPös { get; private set; }
     // Start is called before the first frame update
     private void Awake()
     {
         instance = this;
-        winObject.Add(Element.Fire, false);
-        winObject.Add(Element.Water, false);
+        winObject.Add(Element.Fire, false); winObject.Add(Element.Water, false);
         runtime = true;
+        Spawner.OnGameStart += () => RPC_ActivateTP();
+    }
+    [Rpc(RpcSources.StateAuthority,RpcTargets.All)]
+    void RPC_ActivateTP()
+    {
+        OnGameModeStart?.Invoke();
     }
 
     public void SetCamera(NetworkPlayer player)
     {
         //lo hardcodeo pq al hacerlo network object ya no pude editar las variables desde editor C:
         Camera.main.transform.position = player.transform.position + Vector3.back * 100;
-        Camera.main.transform.forward = (player.transform.position - Camera.main.transform.position).normalized;
+        var dir = player.transform.position - Camera.main.transform.position;
+        Camera.main.transform.forward = dir.normalized;
     }
 
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]

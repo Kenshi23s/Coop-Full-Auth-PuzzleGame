@@ -2,7 +2,6 @@ using TMPro;
 using UnityEngine;
 using System;
 using Random = UnityEngine.Random;
-using Unity.Mathematics;
 
 public class FloatingText : MonoBehaviour
 {
