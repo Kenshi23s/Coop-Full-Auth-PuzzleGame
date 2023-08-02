@@ -52,7 +52,9 @@ public class TriggerLever : MonoBehaviour,Iinteractable
 
             return;
         }
-        _debug.Log("Interadcuo con la palanca");
+        _debug.Log("Interactuo con la palanca");
+
+        AudioManager.instance.Play("InteractButton");
 
         OnTrigger?.Invoke();
         Destroy(gameObject);

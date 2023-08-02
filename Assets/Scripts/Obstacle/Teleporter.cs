@@ -15,6 +15,8 @@ public class Teleporter : MonoBehaviour ,Iinteractable
     {
         if (TPTo == null) return;
         _debug.Log("Teletransporto a" + whoInteracted.name);
+        AudioManager.instance.Play("OnTeleport");
+        whoInteracted.teleportPS.Play();
         whoInteracted.ntwk_transform.TeleportToPosition(new Vector3(TPTo.transform.position.x,
                                                        TPTo.transform.position.y,
                                                        whoInteracted.transform.position.z));

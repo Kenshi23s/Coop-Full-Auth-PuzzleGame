@@ -60,6 +60,8 @@ public class MainMenuHandler : MonoBehaviour
         PlayerPrefs.SetString("PlayerNickname", x);
         PlayerPrefs.Save();
 
+        AudioManager.instance.Play("MenuButtonPressed");
+
         _networkHandler.JoinLobby();
 
         _initialPanel.SetActive(false);
@@ -71,6 +73,8 @@ public class MainMenuHandler : MonoBehaviour
 
     void BTN_ShowHostPanel()
     {
+        AudioManager.instance.Play("MenuButtonPressed");
+
         _browserPanel.SetActive(false);
 
         _hostGamePanel.SetActive(true);
@@ -78,6 +82,7 @@ public class MainMenuHandler : MonoBehaviour
 
     void BTN_CreateGameSession()
     {
+        AudioManager.instance.Play("MenuButtonPressed");
         _networkHandler.CreateSession(_hostSessionName.text, "Level");
     }
 

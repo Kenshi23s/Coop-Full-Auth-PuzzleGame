@@ -35,6 +35,7 @@ public class LifeHandler : NetworkBehaviour
 
         _debug.Log($"recibi {dmg}, mi vida actual es{_currentLife}");
         _currentLife -= dmg;
+        AudioManager.instance.Play("OnDamage");
 
         if (_currentLife == 0)
         {

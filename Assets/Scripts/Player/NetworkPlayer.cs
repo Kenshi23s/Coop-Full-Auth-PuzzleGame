@@ -17,6 +17,8 @@ public class NetworkPlayer : NetworkBehaviour
     [SerializeField]GameObject view;
      NicknameText _myNickname;
 
+    public ParticleSystem teleportPS;
+
     float interactRadius;
     Color newColor;
 
