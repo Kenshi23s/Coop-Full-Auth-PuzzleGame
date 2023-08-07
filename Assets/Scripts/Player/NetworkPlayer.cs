@@ -40,8 +40,8 @@ public class NetworkPlayer : NetworkBehaviour
 
     public void SetElement(Element x)
     {
-        Tuple<LayerMask,Material> data  = LayerManager.instance.GetElementData(x);
-        gameObject.layer = data.Item1.LayerMaskToLayerNumber();
+        var data  = LayerManager.instance.GetElementData(x);
+        gameObject.layer = data.elementLayer.LayerMaskToLayerNumber();
      
     }
     public override void Spawned()

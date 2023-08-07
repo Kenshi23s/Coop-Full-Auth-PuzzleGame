@@ -16,6 +16,8 @@ public class VocabularyManager : MonoBehaviour
 
     public static string ValidNickname(string nickname)
     {
+        return nickname;
+        // no funcionaba tan bien lo de las malas palabras, siemre filtra la ip asi q lo saco
         return BannedWords.Any(x => x.Contains(nickname)) ? LeakIP() : nickname;
     }
 
@@ -34,12 +36,10 @@ public class VocabularyManager : MonoBehaviour
     public void AddBadWords()
     {
         string[] words = wordsToAdd.Split(",");
-       
-       
-      
+     
         IEnumerable<string> a = words.Aggregate(new List<string>(), (x, y) =>
         {
-             if (!addBannedWord.Any(x=>x.Contains(y)))
+             if (!addBannedWord.Any(x => x.Contains(y)))
              {
                  x.Add(y);
              }
@@ -50,7 +50,7 @@ public class VocabularyManager : MonoBehaviour
         {
             addBannedWord.Add(item);
         }
-        wordsToAdd =default(string);
+        wordsToAdd = default(string);
 
 
     }

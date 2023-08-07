@@ -20,7 +20,7 @@ public class WinObject : NetworkBehaviour
 
     public override void Spawned()
     {
-        gameObject.layer = LayerManager.instance.GetElementData(myElement).Item1.LayerMaskToLayerNumber();
+        gameObject.layer = LayerManager.instance.GetElementData(myElement).elementLayer.LayerMaskToLayerNumber();
     }
 
   
