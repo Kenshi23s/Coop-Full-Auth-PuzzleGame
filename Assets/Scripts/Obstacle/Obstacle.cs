@@ -30,12 +30,12 @@ public class Obstacle : NetworkBehaviour
     public void VFXEnter(Vector3 pos)
     {
 
-        if (_splashParticle == null) { Debug.Log(" No Hago Particula"); return; } 
+        if (_splashParticle == null) { Debug.Log(" No Hago Particula"); return; }
 
         Debug.Log("Hago Particula");
         var particle = Instantiate(_splashParticle, pos, Quaternion.identity);
         particle.transform.forward = -Vector3.up;
-        Destroy(particle, particle.GetComponent<ParticleSystem>().time+4f);
+        Destroy(particle, particle.GetComponent<ParticleSystem>().time + 4f);
     }
     private void Awake()
     {
@@ -140,12 +140,12 @@ public class Obstacle : NetworkBehaviour
         if (other.TryGetComponent(out NetworkPlayer player))
         {
             PlayerEnter?.Invoke(player);
+            RPC_FeedbackEnter(player.transform.position);
+            FeedbackEnter?.Invoke(player.transform.position);
             if (player.gameObject.layer != gameObject.layer)
             {
                 aux = player;
                 StartCoroutine(DamageCoroutine());
-                FeedbackEnter?.Invoke(player.transform.position);
-                RPC_FeedbackEnter(player.transform.position);
             }
         }
     }
